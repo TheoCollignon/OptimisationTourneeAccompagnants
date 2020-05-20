@@ -9,16 +9,29 @@ public class Configuration {
     public static int NBR_FORMATIONS = 9;
 
     public ArrayList<Formation> formations = new ArrayList<>();
+    public ArrayList<Interface> interfaces = new ArrayList<>();
 
     public Configuration(){
-        formations.add(Formation.formation1);
-        formations.add(Formation.formation2);
-        formations.add(Formation.formation3);
-        formations.add(Formation.formation4);
-        formations.add(Formation.formation5);
-        formations.add(Formation.formation6);
-        formations.add(Formation.formation7);
-        formations.add(Formation.formation8);
-        formations.add(Formation.formation9);
+        // Ajout de toutes les formations à la liste des formations
+        formations.add(Formation.f1);
+        formations.add(Formation.f2);
+        formations.add(Formation.f3);
+        formations.add(Formation.f4);
+        formations.add(Formation.f5);
+        formations.add(Formation.f6);
+        formations.add(Formation.f7);
+        formations.add(Formation.f8);
+        formations.add(Formation.f9);
+        // Ajout des interfaces à la liste des interfaces
+        interfaces.add(Interface.i1);
+        interfaces.add(Interface.i2);
+        interfaces.add(Interface.i3);
+        interfaces.add(Interface.i4);
+        interfaces.add(Interface.i5);
+        interfaces.add(Interface.i6);
+        interfaces.add(Interface.i7);
+        interfaces.add(Interface.i8);
+        interfaces.add(Interface.i9);
+        interfaces.add(Interface.i10);
     }
 }
