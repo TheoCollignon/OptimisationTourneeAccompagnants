@@ -1,4 +1,4 @@
-public enum Formations {
+public enum Formation {
     formation1(0,1,0,1,13,16),
     formation2(1,0,1,2,8,11),
     formation3(2,1,1,3,9,12),
@@ -20,7 +20,7 @@ public enum Formations {
     // ID_COMPETENCES (Signes : 0 / Codage LPC : 1)
     // ID_JOUR (Lundi : 1 / ... / Samedi : 6)
 
-    Formations(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin){
+    Formation(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin){
         this.idAprennant = idAprennant;
         this.idSpecialite = idSpecialite;
         this.idCompetence = idCompetence;
