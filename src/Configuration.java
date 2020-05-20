@@ -15,7 +15,15 @@ public class Configuration {
     public ArrayList<Coord> coordsApprenants = new ArrayList<>();
 
     public Configuration(){
-        // Ajout de toutes les formations à la liste des formations
+        initFormations();
+        initInterfaces();
+        initCoords();
+    }
+
+    /*
+     * Ajout de toutes les formations à la liste des formations
+     */
+    void initFormations(){
         formations.add(Formation.f1);
         formations.add(Formation.f2);
         formations.add(Formation.f3);
@@ -25,7 +33,12 @@ public class Configuration {
         formations.add(Formation.f7);
         formations.add(Formation.f8);
         formations.add(Formation.f9);
-        // Ajout des interfaces à la liste des interfaces
+    }
+
+    /*
+     * Ajout des interfaces à la liste des interfaces
+     */
+    void initInterfaces(){
         interfaces.add(Interface.i1);
         interfaces.add(Interface.i2);
         interfaces.add(Interface.i3);
@@ -36,7 +49,12 @@ public class Configuration {
         interfaces.add(Interface.i8);
         interfaces.add(Interface.i9);
         interfaces.add(Interface.i10);
-        // Ajout des coordonnées à la liste des coordonnées
+    }
+
+    /*
+     * Ajout des coordonnées aux différentes liste des coordonnées
+     */
+    void initCoords(){
         coordsCentres.add(Coord.centreFormationMenuiserie);
         coordsCentres.add(Coord.centreFormationElectricite);
         coordsCentres.add(Coord.centreFormationMecanique);

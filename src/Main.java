@@ -15,10 +15,11 @@ public class Main {
      */
     private static void printFormations(ArrayList<Formation> formations) {
         System.out.println("Formations : ");
-        for (int i = 0; i < Configuration.NBR_FORMATIONS; i++) {
-            Formation f = formations.get(i);
+        int id = 0;
+        for (Formation f:formations) {
+            id++;
             StringBuilder sb = new StringBuilder();
-            sb.append("Formation ").append(i+1).append(" : ");
+            sb.append("Formation ").append(id).append(" : ");
             sb.append("N° apprenant ").append(f.getIdAprennant()).append(" / ");
             sb.append("Spécialité ");
             switch (f.getIdSpecialite()){
@@ -69,11 +70,11 @@ public class Main {
      */
     private static void printInterfaces(ArrayList<Interface> interfaces) {
         System.out.println("\nInterfaces : ");
-        int idInterface=0;
+        int id=0;
         for (Interface it:interfaces) {
-            idInterface++;
+            id++;
             StringBuilder sb = new StringBuilder();
-            sb.append("Interface ").append(idInterface).append(" : ");
+            sb.append("Interface ").append(id).append(" : ");
             sb.append("Spécialité ");
             switch (it.getIdSpecialite()){
                 case 0:
