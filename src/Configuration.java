@@ -10,6 +10,9 @@ public class Configuration {
 
     public ArrayList<Formation> formations = new ArrayList<>();
     public ArrayList<Interface> interfaces = new ArrayList<>();
+    public ArrayList<Coord> coordsCentres = new ArrayList<>();
+    public ArrayList<Coord> coordsInterfaces = new ArrayList<>();
+    public ArrayList<Coord> coordsApprenants = new ArrayList<>();
 
     public Configuration(){
         // Ajout de toutes les formations à la liste des formations
@@ -33,5 +36,27 @@ public class Configuration {
         interfaces.add(Interface.i8);
         interfaces.add(Interface.i9);
         interfaces.add(Interface.i10);
+        // Ajout des coordonnées à la liste des coordonnées
+        coordsCentres.add(Coord.centreFormationMenuiserie);
+        coordsCentres.add(Coord.centreFormationElectricite);
+        coordsCentres.add(Coord.centreFormationMecanique);
+        coordsInterfaces.add(Coord.pointDepartI1);
+        coordsInterfaces.add(Coord.pointDepartI2);
+        coordsInterfaces.add(Coord.pointDepartI3);
+        coordsInterfaces.add(Coord.pointDepartI4);
+        coordsInterfaces.add(Coord.pointDepartI5);
+        coordsInterfaces.add(Coord.pointDepartI6);
+        coordsInterfaces.add(Coord.pointDepartI7);
+        coordsInterfaces.add(Coord.pointDepartI8);
+        coordsInterfaces.add(Coord.pointDepartI9);
+        coordsInterfaces.add(Coord.pointDepartI10);
+        coordsApprenants.add(Coord.pointDepartA1);
+        coordsApprenants.add(Coord.pointDepartA2);
+        coordsApprenants.add(Coord.pointDepartA3);
+        coordsApprenants.add(Coord.pointDepartA4);
+        coordsApprenants.add(Coord.pointDepartA5);
+        coordsApprenants.add(Coord.pointDepartA6);
+        coordsApprenants.add(Coord.pointDepartA7);
+        coordsApprenants.add(Coord.pointDepartA8);
     }
 }

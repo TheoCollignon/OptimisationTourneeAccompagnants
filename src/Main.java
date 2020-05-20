@@ -7,6 +7,7 @@ public class Main {
         System.out.println("Nombre d'interfaces : "+ Configuration.NBR_INTERFACES +"\nNombre d'apprenants : "+ Configuration.NBR_APPRENANTS +"\nNombre de noeuds    : "+ Configuration.NBR_NODES+"\n");
         printFormations(config.formations);
         printInterfaces(config.interfaces);
+        printCoords(config.coordsCentres,config.coordsInterfaces,config.coordsApprenants);
     }
 
     /*
@@ -68,10 +69,11 @@ public class Main {
      */
     private static void printInterfaces(ArrayList<Interface> interfaces) {
         System.out.println("\nInterfaces : ");
-        for (int i = 0; i < Configuration.NBR_INTERFACES; i++) {
-            Interface it = interfaces.get(i);
+        int idInterface=0;
+        for (Interface it:interfaces) {
+            idInterface++;
             StringBuilder sb = new StringBuilder();
-            sb.append("Interface ").append(i+1).append(" : ");
+            sb.append("Interface ").append(idInterface).append(" : ");
             sb.append("Spécialité ");
             switch (it.getIdSpecialite()){
                 case 0:
@@ -91,6 +93,32 @@ public class Main {
             if (it.getIdCompetence()==0) sb.append("Langage des signes");
             else sb.append("Codage LPC        ");
             System.out.println(sb.toString());
+        }
+    }
+
+    /*
+     * Affichage des coordonnées
+     */
+    private static void printCoords(ArrayList<Coord> coordsCentres, ArrayList<Coord> coordsInterfaces, ArrayList<Coord> coordsApprenants) {
+        System.out.println("\nCoordonnées : ");
+        for (int i = 0; i < 3; i++) {
+            Coord c = coordsCentres.get(i);
+            StringBuilder sb = new StringBuilder();
+            if (i==0) sb.append("Centre de formation Menuiserie  :");
+            else if (i==1) sb.append("Centre de formation Electricité :");
+            else sb.append("Centre de formation Mécanique   :");
+            sb.append(" (").append(c.getX()).append(", ").append(c.getY()).append(")");
+            System.out.println(sb.toString());
+        }
+        int id = 0;
+        for (Coord c:coordsInterfaces) {
+            id++;
+            System.out.println("Point de départ Interface " + id + "     : (" + c.getX() + ", " + c.getY() + ")");
+        }
+        id = 0;
+        for (Coord c:coordsApprenants) {
+            id++;
+            System.out.println("Point de départ Apprenant " + id + "     : (" + c.getX() + ", " + c.getY() + ")");
         }
     }
 }
