@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Coord {
     centreFormationMenuiserie(565.0,575.0),
     centreFormationElectricite(25.0,185.0),

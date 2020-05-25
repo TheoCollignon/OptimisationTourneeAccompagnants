@@ -1,3 +1,7 @@
+import Enums.Coord;
+import Enums.Formation;
+import Enums.Interface;
+
 import java.util.ArrayList;
 
 public class Configuration {

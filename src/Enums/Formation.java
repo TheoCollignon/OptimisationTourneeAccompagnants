@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Formation {
     f1(0,1,0,1,13,16),
     f2(1,0,1,2,8,11),

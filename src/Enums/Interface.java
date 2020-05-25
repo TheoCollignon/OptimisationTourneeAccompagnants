@@ -1,3 +1,5 @@
+package Enums;
+
 public enum Interface {
     i1(0,0),
     i2(1,1),
