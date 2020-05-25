@@ -17,7 +17,7 @@ public class Main {
         p.printCoords(config.coordsCentres,config.coordsInterfaces,config.coordsApprenants);
         */
 
-        Optimisation o = new Optimisation(config);
+        Optimisation o = new Optimisation(config, p);
         o.begin();
     }
 }
