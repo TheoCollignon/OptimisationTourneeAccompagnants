@@ -26,15 +26,17 @@ public class Optimisation {
         for (int day = 1; day < 7; day++) {
             ArrayList<Formation> formationsDuJour = new ArrayList<>();
             for (Formation f:formations) {
-                if (f.getJour()==day) {
-                    formationsDuJour.add(f);
-                }
+                if (f.getJour()==day) formationsDuJour.add(f);
             }
             for (Formation f:formationsDuJour) {
-                if (f.getJour()==day) {
-                    printer.printFormation(f,id);
-                    id++;
+                printer.printFormation(f,id);
+                System.out.println("Interfaces compatibles : ");
+                ArrayList<Interface> interfacesCompatibles = new ArrayList<>();
+                for (Interface i:interfaces) {
+                    if (i.getIdCompetence()==f.getIdCompetence()) interfacesCompatibles.add(i);
                 }
+                printer.printInterfaces(interfacesCompatibles);
+                System.out.println();
             }
         }
     }
