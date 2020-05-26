@@ -5,12 +5,12 @@ import Enums.Interface;
 import java.util.ArrayList;
 
 public class Configuration {
-    public static int NBR_INTERFACES = 10;
-    public static int NBR_APPRENANTS = 8;
-    public static int NBR_CENTRES_FORMATION = 3;
-    public static int NBR_SPECIALITES = 3;
-    public static int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;
-    public static int NBR_FORMATIONS = 9;
+    public int NBR_INTERFACES = 10;
+    public int NBR_APPRENANTS = 8;
+    public int NBR_CENTRES_FORMATION = 3;
+    public int NBR_SPECIALITES = 3;
+    public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;
+    public int NBR_FORMATIONS = 9;
 
     public ArrayList<Formation> formations = new ArrayList<>();
     public ArrayList<Interface> interfaces = new ArrayList<>();

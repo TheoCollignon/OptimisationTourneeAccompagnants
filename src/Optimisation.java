@@ -11,6 +11,8 @@ public class Optimisation {
     private ArrayList<Coord> coordsCentres;
     private ArrayList<Coord> coordsInterfaces;
     private ArrayList<Coord> coordsApprenants;
+    private double[] distanceParcourue;
+    private double[] nbHeuresTravail;
 
     public Optimisation(Configuration config, Printer printer){
         this.printer = printer;
@@ -19,11 +21,13 @@ public class Optimisation {
         this.coordsCentres=config.coordsCentres;
         this.coordsInterfaces=config.coordsInterfaces;
         this.coordsApprenants=config.coordsApprenants;
+        distanceParcourue = new double[config.NBR_INTERFACES];
+        nbHeuresTravail = new double[config.NBR_INTERFACES];
     }
 
     public void begin() {
         int id = 0;
-        for (int day = 1; day < 7; day++) {
+        for (int day = 1; day < 2; day++) {
             ArrayList<Formation> formationsDuJour = new ArrayList<>();
             for (Formation f:formations) {
                 if (f.getJour()==day) formationsDuJour.add(f);
@@ -38,10 +42,18 @@ public class Optimisation {
                 for (Interface i:interfacesCompatibles) {
                     printer.printInterface(i);
                     if (i.getIdSpecialite()==f.getIdSpecialite()) {
-                        System.out.println("Même spécialité ! ");
+                        // Domicile interface -> SESSAD
+                        // tant que missions
+                        // SESSAD -> Domicile apprenant -> Lieu formation
+                        // Lieu formation -> Domicile apprenant -> SESSAD
+                        // fin missions
+                        // SESSAD -> Domicile interface
+                        System.out.println("Même spécialité ! / ");
+                    } else {
+                        System.out.println("Spécialité différente / ");
                     }
+                    System.out.println();
                 }
-
                 System.out.println();
             }
         }
