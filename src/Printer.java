@@ -70,16 +70,14 @@ public class Printer {
      */
     public void printInterfaces(ArrayList<Interface> interfaces) {
         System.out.println("\nInterfaces : ");
-        int id=0;
         for (Interface it:interfaces) {
-            id++;
-            printInterface(it,id);
+            printInterface(it);
         }
     }
 
-    public void printInterface(Interface i, int id){
+    public void printInterface(Interface i){
         StringBuilder sb = new StringBuilder();
-        sb.append("Interface ").append(id).append(" : ");
+        sb.append("Interface ").append(i.getId()).append(" : ");
         sb.append("Spécialité ");
         switch (i.getIdSpecialite()){
             case 0:

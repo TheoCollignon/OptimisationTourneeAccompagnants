@@ -35,7 +35,13 @@ public class Optimisation {
                 for (Interface i:interfaces) {
                     if (i.getIdCompetence()==f.getIdCompetence()) interfacesCompatibles.add(i);
                 }
-                printer.printInterfaces(interfacesCompatibles);
+                for (Interface i:interfacesCompatibles) {
+                    printer.printInterface(i);
+                    if (i.getIdSpecialite()==f.getIdSpecialite()) {
+                        System.out.println("Même spécialité ! ");
+                    }
+                }
+
                 System.out.println();
             }
         }
