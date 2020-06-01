@@ -15,11 +15,13 @@ public enum Interface {
     private int id;
     private int idSpecialite; // (Sans : -1 / Menuiserie : 0 / Electricité : 1 / Mécanique : 2)
     private int idCompetence; // (Signes : 0 / Codage LPC : 1)
+    private int tempsTravail;
 
     Interface(int idInterface, int idSpecialite, int idCompetence){
         this.id = idInterface;
         this.idSpecialite = idSpecialite;
         this.idCompetence = idCompetence;
+        this.tempsTravail = 0;
     }
 
     public int getId() {
@@ -32,5 +34,13 @@ public enum Interface {
 
     public int getIdCompetence() {
         return idCompetence;
+    }
+
+    public int getTempsTravail() {
+        return tempsTravail;
+    }
+
+    public void setTempsTravail(int tempsTravail) {
+        this.tempsTravail = tempsTravail;
     }
 }
