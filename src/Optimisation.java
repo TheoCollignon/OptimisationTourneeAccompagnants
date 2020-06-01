@@ -3,6 +3,8 @@ import Enums.Formation;
 import Enums.Interface;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Optimisation {
     private Printer printer;
@@ -40,6 +42,7 @@ public class Optimisation {
                     if (i.getIdCompetence()==f.getIdCompetence()) interfacesCompatibles.add(i);
                 }
                 for (Interface i:interfacesCompatibles) {
+                    i.setValeurJour(0); // On reinitialise la variable
                     printer.printInterface(i);
                     if (i.getIdSpecialite()==f.getIdSpecialite()) {
                         // Domicile interface -> SESSAD
@@ -54,6 +57,8 @@ public class Optimisation {
                     }
                     System.out.println();
                 }
+                // On trie la liste d'interface par sa valeur
+                // interfacesCompatibles.sort(Comparator.comparingInt(Interface::getValeurJour).reversed());
                 System.out.println();
             }
         }

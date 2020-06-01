@@ -1,6 +1,6 @@
 package Enums;
 
-public enum Interface {
+public enum Interface{
     i1(0,0,0),
     i2(1,1,1),
     i3(2,-1,1),
@@ -16,12 +16,14 @@ public enum Interface {
     private int idSpecialite; // (Sans : -1 / Menuiserie : 0 / Electricité : 1 / Mécanique : 2)
     private int idCompetence; // (Signes : 0 / Codage LPC : 1)
     private int tempsTravail;
+    private int valeurJour;
 
     Interface(int idInterface, int idSpecialite, int idCompetence){
         this.id = idInterface;
         this.idSpecialite = idSpecialite;
         this.idCompetence = idCompetence;
         this.tempsTravail = 0;
+        this.valeurJour = 0;
     }
 
     public int getId() {
@@ -42,5 +44,13 @@ public enum Interface {
 
     public void setTempsTravail(int tempsTravail) {
         this.tempsTravail = tempsTravail;
+    }
+
+    public int getValeurJour() {
+        return valeurJour;
+    }
+
+    public void setValeurJour(int valeurJour) {
+        this.valeurJour = valeurJour;
     }
 }
