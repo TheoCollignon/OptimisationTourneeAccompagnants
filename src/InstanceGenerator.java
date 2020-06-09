@@ -18,6 +18,7 @@ public class InstanceGenerator {
 
     public static String FILE_COORD_NAME = "Coord" +".java";
     public static String FILE_FORM_NAME = "Formation" +".java";
+    public static String FILE_INTERFACE_NAME = "Interface" +".java";
 
     protected BufferedWriter output;
 
@@ -26,7 +27,8 @@ public class InstanceGenerator {
     public InstanceGenerator() {
         rand = new Random();
         //writeEnumCoord();
-        writeEnumFormation();
+        //writeEnumFormation();
+        writeEnumInterface();
     }
 
     private void writeEnumCoord() {
@@ -137,6 +139,99 @@ public class InstanceGenerator {
             output.write("    public int getHeureDebut() { return heureDebut; }\n\n");
             output.write("    public int getHeureFin() { return heureFin; }\n\n");
             output.write("    public int getDuree() { return this.heureFin-this.heureDebut; }\n");
+
+            output.write("}");
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeEnumInterface() {
+        try {
+            output = new BufferedWriter(new FileWriter(FILE_INTERFACE_NAME));
+
+            output.write("package Enums;\n\n");
+            output.write("public enum Interface {\n");
+
+            for (int i = 0; i < NBR_INTERFACES; i++) {
+                int spe = (rand.nextInt(4)-1);
+                int competence = rand.nextInt(2);
+
+                if (i < NBR_INTERFACES-1) {
+                    output.write("    i" + (i + 1) + "("+i+","+spe+","+competence+"), /* interface " + (i + 1) + " */\n");
+                } else {
+                    output.write("    i" + (i + 1) + "("+i+","+spe+","+competence+"); /* interface " + (i + 1) + " */\n\n");
+                }
+            }
+
+            output.write("    private int id;\n");
+            output.write("    private int idSpecialite; // (Sans : -1 / Menuiserie : 0 / Electricité : 1 / Mécanique : 2)\n");
+            output.write("    private int idCompetence; // (Signes : 0 / Codage LPC : 1)\n");
+            output.write("    private int tempsTravail;\n");
+            output.write("    private int tempsTravailJour;\n");
+            output.write("    private double valeurJour;\n");
+            output.write("    private double distanceTotale;\n");
+            output.write("    private double distanceTemporaire;\n\n");
+
+            output.write("    Interface(int idInterface, int idSpecialite, int idCompetence) {\n");
+            output.write("        this.id = idInterface;\n");
+            output.write("        this.idSpecialite = idSpecialite;\n");
+            output.write("        this.idCompetence = idCompetence;\n");
+            output.write("        this.tempsTravail = 0;\n");
+            output.write("        this.tempsTravailJour = 0;\n");
+            output.write("        this.valeurJour = 0;\n");
+            output.write("        this.distanceTotale = 0;\n");
+            output.write("        this.distanceTemporaire = 0;\n");
+            output.write("    }\n\n");
+
+            output.write("    public int getId() { return id; }\n\n");
+            output.write("    public int getIdSpecialite() { return idSpecialite; }\n\n");
+            output.write("    public int getIdCompetence() { return idCompetence; }\n\n");
+            output.write("    public int getTempsTravail() { return tempsTravail; }\n\n");
+            output.write("    public void setTempsTravail(int tempsTravail) {\n" +
+                    "        this.tempsTravail = tempsTravail;\n" +
+                    "    }\n\n");
+            output.write("    public void incrTempsTravail(int incr) {\n" +
+                    "        this.tempsTravail = incr;\n" +
+                    "        incrTempsTravailJour(incr);\n" +
+                    "    }\n\n");
+            output.write("    public double getValeurJour() {\n" +
+                    "        return valeurJour;\n" +
+                    "    }\n\n");
+            output.write("    public void setValeurJour(double valeurJour) {\n" +
+                    "        this.valeurJour = valeurJour;\n" +
+                    "    }\n\n");
+            output.write("    public void incrValeurJour(double incr) {\n" +
+                    "        this.valeurJour += incr;\n" +
+                    "    }\n\n");
+            output.write("    public int getTempsTravailJour() {\n" +
+                    "        return tempsTravailJour;\n" +
+                    "    }\n\n");
+            output.write("    public void setTempsTravailJour(int tempsTravailJour) {\n" +
+                    "        this.tempsTravailJour = tempsTravailJour;\n" +
+                    "    }\n\n");
+            output.write("    private void incrTempsTravailJour(int incr) {\n" +
+                    "        this.tempsTravailJour += incr;\n" +
+                    "    }\n\n");
+            output.write("    public double getDistanceTotale() {\n" +
+                    "        return distanceTotale;\n" +
+                    "    }\n\n");
+            output.write("    public void setDistanceTotale(double distanceTotale) {\n" +
+                    "        this.distanceTotale = distanceTotale;\n" +
+                    "    }\n\n");
+            output.write("    public void incrDistanceTotale(double incr) {\n" +
+                    "        this.distanceTotale += incr;\n" +
+                    "    }\n\n");
+            output.write("    public double getDistanceTemporaire() {\n" +
+                    "        return distanceTemporaire;\n" +
+                    "    }\n\n");
+            output.write("    public void setDistanceTemporaire(double distanceTemporaire) {\n" +
+                    "        this.distanceTemporaire = distanceTemporaire;\n" +
+                    "    }\n\n");
+            output.write("    public void incrDistanceTemporaire(double incr) {\n" +
+                    "        this.distanceTemporaire += incr;\n" +
+                    "    }\n");
 
             output.write("}");
             output.close();
