@@ -7,19 +7,18 @@ import java.util.logging.Logger;
 
 public class InstanceGenerator {
 
-    public static int NBR_APPRENANTS = 20;
+    public static int NBR_APPRENANTS = 10;
     public static int NBR_COURS_PAR_SEMAINE = 4; // max 10 demi-journées par apprenant
-    public static int NBR_CENTRES_FORMATION = 3;
 
     public static int DIMENSION_ZONE_GEOGRAPHIQUE = 200;
 
     public static int NBR_INTERFACES = (int) (NBR_APPRENANTS * 1.2);
     public static int NBR_FORMATIONS = NBR_APPRENANTS * NBR_COURS_PAR_SEMAINE;
 
-    public static String FILE_COORD_NAME = "Coord" +".java";
-    public static String FILE_FORM_NAME = "Formation" +".java";
-    public static String FILE_INTERFACE_NAME = "Interface" +".java";
-    public static String FILE_CONF_NAME = "Configuration" +".java";
+    public static String FILE_COORD_NAME = "src/Enums/Coord" +".java";
+    public static String FILE_FORM_NAME = "src/Enums/Formation" +".java";
+    public static String FILE_INTERFACE_NAME = "src/Enums/Interface" +".java";
+    public static String FILE_CONF_NAME = "src/Configuration" +".java";
 
     protected BufferedWriter output;
 
@@ -27,13 +26,11 @@ public class InstanceGenerator {
 
     public InstanceGenerator() {
         rand = new Random();
-        //writeEnumCoord();
-        //writeEnumFormation();
-        //writeEnumInterface();
+        writeEnumCoord();
+        writeEnumFormation();
+        writeEnumInterface();
         writeConfiguration();
     }
-
-
 
     private void writeEnumCoord() {
         try {
@@ -327,7 +324,7 @@ public class InstanceGenerator {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        InstanceGenerator instanceGenerator = new InstanceGenerator();
+        new InstanceGenerator();
     }
 
 }

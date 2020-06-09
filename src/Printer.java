@@ -130,7 +130,7 @@ public class Printer {
     }
 
     public void printCoordInterface(Coord c, int id){
-        System.out.println("Point de départ Enums.Interface " + id + "     : (" + c.getX() + ", " + c.getY() + ")");
+        System.out.println("Point de départ Interface " + id + "     : (" + c.getX() + ", " + c.getY() + ")");
     }
 
     public void printCoordApprenant(Coord c, int id){
