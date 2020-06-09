@@ -1,6 +1,4 @@
-import Enums.Coord;
-import Enums.Formation;
-import Enums.Interface;
+import Enums.*;
 
 import java.util.ArrayList;
 

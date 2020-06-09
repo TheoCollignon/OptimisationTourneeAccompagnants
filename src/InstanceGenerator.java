@@ -19,6 +19,7 @@ public class InstanceGenerator {
     public static String FILE_COORD_NAME = "Coord" +".java";
     public static String FILE_FORM_NAME = "Formation" +".java";
     public static String FILE_INTERFACE_NAME = "Interface" +".java";
+    public static String FILE_CONF_NAME = "Configuration" +".java";
 
     protected BufferedWriter output;
 
@@ -28,8 +29,11 @@ public class InstanceGenerator {
         rand = new Random();
         //writeEnumCoord();
         //writeEnumFormation();
-        writeEnumInterface();
+        //writeEnumInterface();
+        writeConfiguration();
     }
+
+
 
     private void writeEnumCoord() {
         try {
@@ -234,6 +238,29 @@ public class InstanceGenerator {
                     "    }\n");
 
             output.write("}");
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeConfiguration() {
+        try {
+            output = new BufferedWriter(new FileWriter(FILE_CONF_NAME));
+            output.write("import Enums.*;\n");
+            output.write("import java.util.ArrayList;\n\n");
+
+            output.write("public class Configuration {\n");
+            output.write("    public int NBR_INTERFACES = "+NBR_INTERFACES+";\n");
+            output.write("    public int NBR_APPRENANTS = "+NBR_APPRENANTS+";\n");
+            output.write("    public int NBR_CENTRES_FORMATION = "+3+";\n");
+            output.write("    public int NBR_SPECIALITES = "+3+";\n");
+            output.write("    public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;\n");
+            output.write("    public int NBR_FORMATIONS = "+NBR_FORMATIONS+";\n\n");
+
+
+
+            output.write("}\n");
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
