@@ -16,7 +16,7 @@ public enum Interface{
     private int idSpecialite; // (Sans : -1 / Menuiserie : 0 / Electricité : 1 / Mécanique : 2)
     private int idCompetence; // (Signes : 0 / Codage LPC : 1)
     private int tempsTravail;
-    private int valeurJour;
+    private double valeurJour;
 
     Interface(int idInterface, int idSpecialite, int idCompetence){
         this.id = idInterface;
@@ -46,11 +46,15 @@ public enum Interface{
         this.tempsTravail = tempsTravail;
     }
 
-    public int getValeurJour() {
+    public double getValeurJour() {
         return valeurJour;
     }
 
-    public void setValeurJour(int valeurJour) {
+    public void setValeurJour(double valeurJour) {
         this.valeurJour = valeurJour;
+    }
+
+    public void incrValeurJour(double incr) {
+        this.valeurJour += incr;
     }
 }
