@@ -50,4 +50,9 @@ public enum Formation {
     public int getHeureFin() {
         return heureFin;
     }
+
+    public int getDuree()
+    {
+        return this.heureFin-this.heureDebut;
+    }
 }

@@ -3,8 +3,6 @@ import Enums.Formation;
 import Enums.Interface;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class Optimisation {
     private Printer printer;
@@ -39,7 +37,10 @@ public class Optimisation {
                 System.out.println("Interfaces compatibles : ");
                 ArrayList<Interface> interfacesCompatibles = new ArrayList<>();
                 for (Interface i : interfaces) {
-                    if (i.getIdCompetence() == f.getIdCompetence()) interfacesCompatibles.add(i);
+                    if ((i.getIdCompetence() == f.getIdCompetence())
+                            && (i.getTempsTravail() + f.getDuree() <= 35)) {
+                        interfacesCompatibles.add(i);
+                    }
                 }
 
                 // Pour parcourir chaque coord interface
