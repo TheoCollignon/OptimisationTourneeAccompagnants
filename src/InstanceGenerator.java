@@ -276,7 +276,10 @@ public class InstanceGenerator {
                     "     * Ajout de toutes les formations à la liste des formations\n" +
                     "     */\n");
             output.write("    void initFormations(){\n");
-            output.write("    }\n");
+            for (int i = 0; i < NBR_FORMATIONS; i++) {
+                output.write("        formations.add(Formation.f"+(i+1)+");\n");
+            }
+            output.write("    }\n\n");
 
 
 
@@ -286,7 +289,10 @@ public class InstanceGenerator {
                     "     * Ajout des interfaces à la liste des interfaces\n" +
                     "     */\n");
             output.write("    void initInterfaces(){\n");
-            output.write("    }\n");
+            for (int i = 0; i < NBR_INTERFACES; i++) {
+                output.write("        interfaces.add(Interface.i"+(i+1)+");\n");
+            }
+            output.write("    }\n\n");
 
 
 
@@ -297,7 +303,7 @@ public class InstanceGenerator {
                     "     * Ajout des coordonnées aux différentes liste des coordonnées\n" +
                     "     */\n");
             output.write("    void initCoords(){\n");
-            output.write("    }\n");
+            output.write("    }\n\n");
 
 
 
