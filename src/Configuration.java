@@ -17,11 +17,13 @@ public class Configuration {
     public ArrayList<Coord> coordsCentres = new ArrayList<>();
     public ArrayList<Coord> coordsInterfaces = new ArrayList<>();
     public ArrayList<Coord> coordsApprenants = new ArrayList<>();
+    public Coord SESSAD;
 
     public Configuration(){
         initFormations();
         initInterfaces();
         initCoords();
+        this.SESSAD = Coord.SESSAD;
     }
 
     /*

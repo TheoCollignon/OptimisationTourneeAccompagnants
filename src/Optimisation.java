@@ -3,6 +3,7 @@ import Enums.Formation;
 import Enums.Interface;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Optimisation {
     private Printer printer;
@@ -11,6 +12,7 @@ public class Optimisation {
     private ArrayList<Coord> coordsCentres;
     private ArrayList<Coord> coordsInterfaces;
     private ArrayList<Coord> coordsApprenants;
+    private Coord coordSESSAD;
 
     public Optimisation(Configuration config, Printer printer) {
         this.printer = printer;
@@ -19,6 +21,7 @@ public class Optimisation {
         this.coordsCentres = config.coordsCentres;
         this.coordsInterfaces = config.coordsInterfaces;
         this.coordsApprenants = config.coordsApprenants;
+        this.coordSESSAD = config.SESSAD;
     }
 
     public void begin() {
@@ -96,25 +99,38 @@ public class Optimisation {
                         // Domicile interface -> SESSAD
                         int idInterface = i.getId();
                         Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
-                        //i.incrValeurJour(calcDistance(coordInterface, coordSESSAD));
+                        double distanceInterfaceSESSAD = calcDistance(coordInterface, coordSESSAD);
+                        i.incrDistanceTemporaire(distanceInterfaceSESSAD);
+                        i.incrValeurJour(distanceInterfaceSESSAD);
+                        /*
+                        System.out.println(idInterface);
+                        System.out.println(coordInterface.getX());
+                        */
 
                         // SESSAD -> Domicile apprenant
                         int idApprenant = f.getIdAprennant();
                         Coord coordApprenant = coordsApprenants.get(idApprenant);
-                        //i.incrValeurJour(calcDistance(coordSESSAD, coordApprenant));
+                        double distanceSESSADApprennant = calcDistance(coordSESSAD, coordApprenant);
+                        i.incrDistanceTemporaire(distanceSESSADApprennant);
+                        i.incrValeurJour(distanceSESSADApprennant);
 
                         // Domicile apprenant -> Lieu formation
                         Coord coordFormation = coordsCentres.get(f.getIdSpecialite());
-                        i.incrValeurJour(calcDistance(coordApprenant, coordFormation));
+                        double distanceApprennantFormation = calcDistance(coordApprenant, coordFormation);
+                        i.incrDistanceTemporaire(distanceApprennantFormation);
+                        i.incrValeurJour(distanceApprennantFormation);
 
                         // Lieu formation -> Domicile apprenant
-                        i.incrValeurJour(calcDistance(coordFormation, coordApprenant));
+                        i.incrDistanceTemporaire(distanceApprennantFormation);
+                        i.incrValeurJour(distanceApprennantFormation);
 
                         // Domicile apprenant -> SESSAD
-                        //i.incrValeurJour(calcDistance(coordApprenant, coordSESSAD));
+                        i.incrDistanceTemporaire(distanceSESSADApprennant);
+                        i.incrValeurJour(distanceSESSADApprennant);
 
                         // SESSAD -> Domicile interface
-                        //i.incrValeurJour(calcDistance(coordSESSAD, coordInterface));
+                        i.incrDistanceTemporaire(distanceInterfaceSESSAD);
+                        i.incrValeurJour(distanceInterfaceSESSAD);
 
                         //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
                         //TODO: Multiplicateur heure de travail
@@ -124,11 +140,11 @@ public class Optimisation {
                     System.out.println();
                 }
                 // On trie la liste d'interface par sa valeur
-                // interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
+                interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
 
                 // La première interface est choisie
-                //interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
-                //interfacesCompatibles.get(0).incrDistanceTotale(interfacesCompatibles.get(0).getDistanceTemporaire());
+                interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
+                interfacesCompatibles.get(0).incrDistanceTotale(interfacesCompatibles.get(0).getDistanceTemporaire());
 
                 System.out.println();
             }

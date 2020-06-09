@@ -4,6 +4,7 @@ public enum Coord {
     centreFormationMenuiserie(565.0,575.0),
     centreFormationElectricite(25.0,185.0),
     centreFormationMecanique(345.0,750.0),
+    SESSAD(0,0),
     // points de départs des interfaces
     pointDepartI1(945.0,685.0),
     pointDepartI2(845.0,655.0),
