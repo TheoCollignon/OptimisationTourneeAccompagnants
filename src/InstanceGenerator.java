@@ -17,6 +17,7 @@ public class InstanceGenerator {
     public static int NBR_FORMATIONS = NBR_APPRENANTS * NBR_COURS_PAR_SEMAINE;
 
     public static String FILE_COORD_NAME = "Coord" +".java";
+    public static String FILE_FORM_NAME = "Formation" +".java";
 
     protected BufferedWriter output;
 
@@ -24,7 +25,8 @@ public class InstanceGenerator {
 
     public InstanceGenerator() {
         rand = new Random();
-        writeEnumCoord();
+        //writeEnumCoord();
+        writeEnumFormation();
     }
 
     private void writeEnumCoord() {
@@ -74,6 +76,31 @@ public class InstanceGenerator {
             output.write("    public double getY() { return y; }\n");
             output.write("}");
 
+
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeEnumFormation() {
+        try {
+            output = new BufferedWriter(new FileWriter(FILE_FORM_NAME));
+
+            output.write("package Enums;\n\n");
+            output.write("public enum Formation {\n");
+
+            for (int i = 0; i < NBR_FORMATIONS; i++) {
+                int apprenant = rand.nextInt(NBR_APPRENANTS);
+                int spe = rand.nextInt(3);
+                int competence = rand.nextInt(2);
+                int jour = (rand.nextInt(6)+1);
+                if (i < NBR_FORMATIONS-1) {
+                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+"), /* formation " + (i + 1) + " */\n");
+                } else {
+                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+"); /* formation " + (i + 1) + " */\n\n");
+                }
+            }
 
             output.close();
         } catch (IOException e) {
