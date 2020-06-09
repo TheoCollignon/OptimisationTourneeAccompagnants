@@ -18,6 +18,8 @@ public enum Interface{
     private int tempsTravail;
     private int tempsTravailJour;
     private double valeurJour;
+    private double distanceTotale;
+    private double distanceTemporaire;
 
     Interface(int idInterface, int idSpecialite, int idCompetence){
         this.id = idInterface;
@@ -26,6 +28,8 @@ public enum Interface{
         this.tempsTravail = 0;
         this.tempsTravailJour = 0;
         this.valeurJour = 0;
+        this.distanceTotale = 0;
+        this.distanceTemporaire = 0;
     }
 
     public int getId() {
@@ -75,5 +79,29 @@ public enum Interface{
 
     private void incrTempsTravailJour(int incr) {
         this.tempsTravailJour += incr;
+    }
+
+    public double getDistanceTotale() {
+        return distanceTotale;
+    }
+
+    public void setDistanceTotale(double distanceTotale) {
+        this.distanceTotale = distanceTotale;
+    }
+
+    public void incrDistanceTotale(double incr) {
+        this.distanceTotale += incr;
+    }
+
+    public double getDistanceTemporaire() {
+        return distanceTemporaire;
+    }
+
+    public void setDistanceTemporaire(double distanceTemporaire) {
+        this.distanceTemporaire = distanceTemporaire;
+    }
+
+    public void incrDistanceTemporaire(double incr) {
+        this.distanceTemporaire += incr;
     }
 }
