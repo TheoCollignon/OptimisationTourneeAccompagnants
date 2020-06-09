@@ -11,6 +11,8 @@ public class Optimisation {
     private ArrayList<Coord> coordsCentres;
     private ArrayList<Coord> coordsInterfaces;
     private ArrayList<Coord> coordsApprenants;
+
+    // Utile ?
     private double[] distanceParcourue;
     private double[] nbHeuresTravail;
 
@@ -43,9 +45,6 @@ public class Optimisation {
                         interfacesCompatibles.add(i);
                     }
                 }
-
-                // Pour parcourir chaque coord interface
-                // A 2, car decalage dans Coord.java
 
                 for (Interface i : interfacesCompatibles) {
                     i.setValeurJour(0); // On reinitialise la variable
@@ -121,6 +120,10 @@ public class Optimisation {
                 }
                 // On trie la liste d'interface par sa valeur
                 // interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
+
+                // La première interface est choisie
+                //interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
+
                 System.out.println();
             }
         }

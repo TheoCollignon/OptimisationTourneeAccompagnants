@@ -48,6 +48,11 @@ public enum Interface{
         this.tempsTravail = tempsTravail;
     }
 
+    public void incrTempsTravail(int incr) {
+        this.tempsTravail = incr;
+        incrTempsTravailJour(incr);
+    }
+
     public double getValeurJour() {
         return valeurJour;
     }
@@ -68,7 +73,7 @@ public enum Interface{
         this.tempsTravailJour = tempsTravailJour;
     }
 
-    public void incrTempsTravailJour(int incr) {
+    private void incrTempsTravailJour(int incr) {
         this.tempsTravailJour += incr;
     }
 }
