@@ -8,7 +8,7 @@ public enum Formation {
     f5(4,1,0,1,9,12),
     f6(5,0,0,4,8,11),
     f7(0,1,0,4,8,12),
-    f8(6,-1,1,4,14,17),
+    f8(6,2,1,4,14,17),
     f9(7,1,1,5,8,11);
 
     private int idAprennant;
@@ -18,7 +18,7 @@ public enum Formation {
     private int heureDebut;
     private int heureFin;
 
-    Formation(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin){
+    Formation(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin) {
         this.idAprennant = idAprennant;
         this.idSpecialite = idSpecialite;
         this.idCompetence = idCompetence;
