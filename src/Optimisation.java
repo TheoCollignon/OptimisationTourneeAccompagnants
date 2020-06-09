@@ -38,7 +38,8 @@ public class Optimisation {
                 ArrayList<Interface> interfacesCompatibles = new ArrayList<>();
                 for (Interface i : interfaces) {
                     if ((i.getIdCompetence() == f.getIdCompetence())
-                            && (i.getTempsTravail() + f.getDuree() <= 35)) {
+                            && (i.getTempsTravail() + f.getDuree() <= 35)
+                            && (i.getTempsTravailJour() + f.getDuree() <= 8)) {
                         interfacesCompatibles.add(i);
                     }
                 }
@@ -56,7 +57,7 @@ public class Optimisation {
                         // Domicile interface -> SESSAD
                         int idInterface = i.getId();
                         Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
-                        i.incrValeurJour(calcDistance(coordInterface, coordSESSAD));
+                        //i.incrValeurJour(calcDistance(coordInterface, coordSESSAD));
                         /*
                         System.out.println(idInterface);
                         System.out.println(coordInterface.getX());
@@ -65,7 +66,7 @@ public class Optimisation {
                         // SESSAD -> Domicile apprenant
                         int idApprenant = f.getIdAprennant();
                         Coord coordApprenant = coordsApprenants.get(idApprenant);
-                        i.incrValeurJour(calcDistance(coordSESSAD, coordApprenant));
+                        //i.incrValeurJour(calcDistance(coordSESSAD, coordApprenant));
 
                         // Domicile apprenant -> Lieu formation
                         Coord coordFormation = coordsCentres.get(f.getIdSpecialite());
@@ -75,10 +76,10 @@ public class Optimisation {
                         i.incrValeurJour(calcDistance(coordFormation, coordApprenant));
 
                         // Domicile apprenant -> SESSAD
-                        i.incrValeurJour(calcDistance(coordApprenant, coordSESSAD));
+                        //i.incrValeurJour(calcDistance(coordApprenant, coordSESSAD));
 
                         // SESSAD -> Domicile interface
-                        i.incrValeurJour(calcDistance(coordSESSAD, coordInterface));
+                        //i.incrValeurJour(calcDistance(coordSESSAD, coordInterface));
 
                         //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
                         //TODO: Multiplicateur heure de travail
@@ -91,12 +92,12 @@ public class Optimisation {
                         // Domicile interface -> SESSAD
                         int idInterface = i.getId();
                         Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
-                        i.incrValeurJour(calcDistance(coordInterface, coordSESSAD));
+                        //i.incrValeurJour(calcDistance(coordInterface, coordSESSAD));
 
                         // SESSAD -> Domicile apprenant
                         int idApprenant = f.getIdAprennant();
                         Coord coordApprenant = coordsApprenants.get(idApprenant);
-                        i.incrValeurJour(calcDistance(coordSESSAD, coordApprenant));
+                        //i.incrValeurJour(calcDistance(coordSESSAD, coordApprenant));
 
                         // Domicile apprenant -> Lieu formation
                         Coord coordFormation = coordsCentres.get(f.getIdSpecialite());
@@ -106,10 +107,10 @@ public class Optimisation {
                         i.incrValeurJour(calcDistance(coordFormation, coordApprenant));
 
                         // Domicile apprenant -> SESSAD
-                        i.incrValeurJour(calcDistance(coordApprenant, coordSESSAD));
+                        //i.incrValeurJour(calcDistance(coordApprenant, coordSESSAD));
 
                         // SESSAD -> Domicile interface
-                        i.incrValeurJour(calcDistance(coordSESSAD, coordInterface));
+                        //i.incrValeurJour(calcDistance(coordSESSAD, coordInterface));
 
                         //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
                         //TODO: Multiplicateur heure de travail
