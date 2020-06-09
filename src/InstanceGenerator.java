@@ -95,13 +95,50 @@ public class InstanceGenerator {
                 int spe = rand.nextInt(3);
                 int competence = rand.nextInt(2);
                 int jour = (rand.nextInt(6)+1);
-                if (i < NBR_FORMATIONS-1) {
-                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+"), /* formation " + (i + 1) + " */\n");
+
+                int matin = rand.nextInt(2);
+                int hdebut, hfin;
+                if (matin == 1) {
+                    hdebut = 8 + rand.nextInt(3);
+                    hfin = hdebut + rand.nextInt(11 - hdebut) + 2;
                 } else {
-                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+"); /* formation " + (i + 1) + " */\n\n");
+                    hdebut = 13 + rand.nextInt(4);
+                    hfin = hdebut + rand.nextInt(18 - hdebut) + 2;
+
+                }
+
+                if (i < NBR_FORMATIONS-1) {
+                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+","+hdebut+","+hfin+"), /* formation " + (i + 1) + " */\n");
+                } else {
+                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+","+hdebut+","+hfin+"); /* formation " + (i + 1) + " */\n\n");
                 }
             }
 
+            output.write("    private int idAprennant;\n");
+            output.write("    private int idSpecialite; // (Sans : -1 / Menuiserie : 0 / Electricité : 1 / Mécanique : 2)\n");
+            output.write("    private int idCompetence; // (Signes : 0 / Codage LPC : 1)\n");
+            output.write("    private int jour; // (Lundi : 1 / ... / Samedi : 6)\n");
+            output.write("    private int heureDebut;\n");
+            output.write("    private int heureFin;\n\n");
+
+            output.write("    Formation(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin) {\n");
+            output.write("        this.idAprennant = idAprennant;\n");
+            output.write("        this.idSpecialite = idSpecialite;\n");
+            output.write("        this.idCompetence = idCompetence;\n");
+            output.write("        this.jour = jour;\n");
+            output.write("        this.heureDebut = heureDebut;\n");
+            output.write("        this.heureFin = heureFin;\n");
+            output.write("    }\n\n");
+
+            output.write("    public int getIdAprennant() { return idAprennant; }\n\n");
+            output.write("    public int getIdSpecialite() { return idSpecialite; }\n\n");
+            output.write("    public int getIdCompetence() { return idCompetence; }\n\n");
+            output.write("    public int getJour() { return jour; }\n\n");
+            output.write("    public int getHeureDebut() { return heureDebut; }\n\n");
+            output.write("    public int getHeureFin() { return heureFin; }\n\n");
+            output.write("    public int getDuree() { return this.heureFin-this.heureDebut; }\n");
+
+            output.write("}");
             output.close();
         } catch (IOException e) {
             e.printStackTrace();
