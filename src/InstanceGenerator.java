@@ -303,7 +303,16 @@ public class InstanceGenerator {
                     "     * Ajout des coordonnées aux différentes liste des coordonnées\n" +
                     "     */\n");
             output.write("    void initCoords(){\n");
-            output.write("    }\n\n");
+            output.write("        coordsCentres.add(Coord.centreFormationMenuiserie);\n");
+            output.write("        coordsCentres.add(Coord.centreFormationElectricite);\n");
+            output.write("        coordsCentres.add(Coord.centreFormationMecanique);\n");
+            for (int i = 0; i < NBR_INTERFACES; i++) {
+                output.write("        coordsInterfaces.add(Coord.pointDepartI"+(i+1)+");\n");
+            }
+            for (int i = 0; i < NBR_APPRENANTS; i++) {
+                output.write("        coordsApprenants.add(Coord.pointDepartA"+(i+1)+");\n");
+            }
+            output.write("    }\n");
 
 
 
