@@ -118,7 +118,7 @@ public class Optimisation {
                     System.out.println();
                 }
                 // On trie la liste d'interface par sa valeur
-                // interfacesCompatibles.sort(Comparator.comparingInt(Interface::getValeurJour).reversed());
+                // interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
                 System.out.println();
             }
         }
