@@ -25,17 +25,23 @@ public class Optimisation {
     }
 
     public void begin() {
+
         int id = 0;
         for (int day = 1; day < 2; day++) {
+
             ArrayList<Formation> formationsDuJour = new ArrayList<>();
             for (Formation f : formations) {
                 if (f.getJour() == day) formationsDuJour.add(f);
             }
+
             for (Formation f : formationsDuJour) {
+
                 printer.printFormation(f, id);
                 System.out.println("Interfaces compatibles : ");
                 ArrayList<Interface> interfacesCompatibles = new ArrayList<>();
+
                 for (Interface i : interfaces) {
+
                     if ((i.getIdCompetence() == f.getIdCompetence())
                             && (i.getTempsTravail() + f.getDuree() <= 35)
                             && (i.getTempsTravailJour() + f.getDuree() <= 8)) {
@@ -43,104 +49,70 @@ public class Optimisation {
                     }
                 }
 
-
                 for (Interface i : interfacesCompatibles) {
+
                     i.setDistanceTemporaire(0);
                     i.setValeurJour(0); // On reinitialise la variable
                     printer.printInterface(i);
+
+                    System.out.println("Même spécialité ! / ");
+
+                    // Domicile interface -> SESSAD
+                    int idInterface = i.getId();
+                    Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
+                    double distanceInterfaceSESSAD = calcDistance(coordInterface, coordSESSAD);
+                    i.incrDistanceTemporaire(distanceInterfaceSESSAD);
+                    i.incrValeurJour(distanceInterfaceSESSAD);
+                    /*
+                    System.out.println(idInterface);
+                    System.out.println(coordInterface.getX());
+                    */
+
+                    // SESSAD -> Domicile apprenant
+                    int idApprenant = f.getIdAprennant();
+                    Coord coordApprenant = coordsApprenants.get(idApprenant);
+                    double distanceSESSADApprennant = calcDistance(coordSESSAD, coordApprenant);
+                    i.incrDistanceTemporaire(distanceSESSADApprennant);
+                    i.incrValeurJour(distanceSESSADApprennant);
+
+                    // Domicile apprenant -> Lieu formation
+                    Coord coordFormation = coordsCentres.get(f.getIdSpecialite());
+                    double distanceApprennantFormation = calcDistance(coordApprenant, coordFormation);
+                    i.incrDistanceTemporaire(distanceApprennantFormation);
+                    i.incrValeurJour(distanceApprennantFormation);
+
+                    // Lieu formation -> Domicile apprenant
+                    i.incrDistanceTemporaire(distanceApprennantFormation);
+                    i.incrValeurJour(distanceApprennantFormation);
+
+                    // Domicile apprenant -> SESSAD
+                    i.incrDistanceTemporaire(distanceSESSADApprennant);
+                    i.incrValeurJour(distanceSESSADApprennant);
+
+                    // SESSAD -> Domicile interface
+                    i.incrDistanceTemporaire(distanceInterfaceSESSAD);
+                    i.incrValeurJour(distanceInterfaceSESSAD);
+
+                    //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
+                    //TODO: Multiplicateur heure de travail (MALUS plus le nombre d'heure est important)
+
+                    /*
+                    //Multiplicateur de spécialité
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
-
-                        System.out.println("Même spécialité ! / ");
-
-                        // Domicile interface -> SESSAD
-                        int idInterface = i.getId();
-                        Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
-                        double distanceInterfaceSESSAD = calcDistance(coordInterface, coordSESSAD);
-                        i.incrDistanceTemporaire(distanceInterfaceSESSAD);
-                        i.incrValeurJour(distanceInterfaceSESSAD);
-                        /*
-                        System.out.println(idInterface);
-                        System.out.println(coordInterface.getX());
-                        */
-
-                        // SESSAD -> Domicile apprenant
-                        int idApprenant = f.getIdAprennant();
-                        Coord coordApprenant = coordsApprenants.get(idApprenant);
-                        double distanceSESSADApprennant = calcDistance(coordSESSAD, coordApprenant);
-                        i.incrDistanceTemporaire(distanceSESSADApprennant);
-                        i.incrValeurJour(distanceSESSADApprennant);
-
-                        // Domicile apprenant -> Lieu formation
-                        Coord coordFormation = coordsCentres.get(f.getIdSpecialite());
-                        double distanceApprennantFormation = calcDistance(coordApprenant, coordFormation);
-                        i.incrDistanceTemporaire(distanceApprennantFormation);
-                        i.incrValeurJour(distanceApprennantFormation);
-
-                        // Lieu formation -> Domicile apprenant
-                        i.incrDistanceTemporaire(distanceApprennantFormation);
-                        i.incrValeurJour(distanceApprennantFormation);
-
-                        // Domicile apprenant -> SESSAD
-                        i.incrDistanceTemporaire(distanceSESSADApprennant);
-                        i.incrValeurJour(distanceSESSADApprennant);
-
-                        // SESSAD -> Domicile interface
-                        i.incrDistanceTemporaire(distanceInterfaceSESSAD);
-                        i.incrValeurJour(distanceInterfaceSESSAD);
-
-                        //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
-                        //TODO: Multiplicateur heure de travail
-                        //TODO: Multiplicateur de spécialité
-
-                    } else {
-
-                        System.out.println("Spécialité différente / ");
-
-                        // Domicile interface -> SESSAD
-                        int idInterface = i.getId();
-                        Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
-                        double distanceInterfaceSESSAD = calcDistance(coordInterface, coordSESSAD);
-                        i.incrDistanceTemporaire(distanceInterfaceSESSAD);
-                        i.incrValeurJour(distanceInterfaceSESSAD);
-                        /*
-                        System.out.println(idInterface);
-                        System.out.println(coordInterface.getX());
-                        */
-
-                        // SESSAD -> Domicile apprenant
-                        int idApprenant = f.getIdAprennant();
-                        Coord coordApprenant = coordsApprenants.get(idApprenant);
-                        double distanceSESSADApprennant = calcDistance(coordSESSAD, coordApprenant);
-                        i.incrDistanceTemporaire(distanceSESSADApprennant);
-                        i.incrValeurJour(distanceSESSADApprennant);
-
-                        // Domicile apprenant -> Lieu formation
-                        Coord coordFormation = coordsCentres.get(f.getIdSpecialite());
-                        double distanceApprennantFormation = calcDistance(coordApprenant, coordFormation);
-                        i.incrDistanceTemporaire(distanceApprennantFormation);
-                        i.incrValeurJour(distanceApprennantFormation);
-
-                        // Lieu formation -> Domicile apprenant
-                        i.incrDistanceTemporaire(distanceApprennantFormation);
-                        i.incrValeurJour(distanceApprennantFormation);
-
-                        // Domicile apprenant -> SESSAD
-                        i.incrDistanceTemporaire(distanceSESSADApprennant);
-                        i.incrValeurJour(distanceSESSADApprennant);
-
-                        // SESSAD -> Domicile interface
-                        i.incrDistanceTemporaire(distanceInterfaceSESSAD);
-                        i.incrValeurJour(distanceInterfaceSESSAD);
-
-                        //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
-                        //TODO: Multiplicateur heure de travail
-                        //TODO: Multiplicateur de spécialité
-
+                        i.incrValeurJour(i.getValeurJour()*MULTIPLICATEUR);
                     }
+                    */
+
                     System.out.println();
                 }
                 // On trie la liste d'interface par sa valeur
                 interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
+
+                /* Verification sucess: Max to Min
+                System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
+                System.out.println("1:" + interfacesCompatibles.get(1).getValeurJour());
+                System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());
+                */
 
                 // La première interface est choisie
                 interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
