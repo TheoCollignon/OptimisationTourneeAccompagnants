@@ -55,8 +55,6 @@ public class Optimisation {
                     i.setValeurJour(0); // On reinitialise la variable
                     printer.printInterface(i);
 
-                    System.out.println("Même spécialité ! / ");
-
                     // Domicile interface -> SESSAD
                     int idInterface = i.getId();
                     Coord coordInterface = coordsInterfaces.get(idInterface); // Coordonnées de l'interface
@@ -99,7 +97,12 @@ public class Optimisation {
                     /*
                     //Multiplicateur de spécialité
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
+                        System.out.println("Même spécialité ! / ");
                         i.incrValeurJour(i.getValeurJour()*MULTIPLICATEUR);
+                    }
+                    else {
+                        System.out.println("Autre spécialité ! / ");
+                        i.incrValeurJour(i.getValeurJour()*MULTIPLICATEUR2);
                     }
                     */
 
