@@ -258,6 +258,47 @@ public class InstanceGenerator {
             output.write("    public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;\n");
             output.write("    public int NBR_FORMATIONS = "+NBR_FORMATIONS+";\n\n");
 
+            output.write("    public ArrayList<Formation> formations = new ArrayList<>();\n");
+            output.write("    public ArrayList<Interface> interfaces = new ArrayList<>();\n");
+            output.write("    public ArrayList<Coord> coordsCentres = new ArrayList<>();\n");
+            output.write("    public ArrayList<Coord> coordsInterfaces = new ArrayList<>();\n");
+            output.write("    public ArrayList<Coord> coordsApprenants = new ArrayList<>();\n");
+            output.write("    public Coord SESSAD;\n\n");
+
+            output.write("    public Configuration(){\n" +
+                    "        initFormations();\n" +
+                    "        initInterfaces();\n" +
+                    "        initCoords();\n" +
+                    "        this.SESSAD = Coord.SESSAD;\n" +
+                    "    }\n\n");
+
+            output.write("    /*\n" +
+                    "     * Ajout de toutes les formations à la liste des formations\n" +
+                    "     */\n");
+            output.write("    void initFormations(){\n");
+            output.write("    }\n");
+
+
+
+
+
+            output.write("    /*\n" +
+                    "     * Ajout des interfaces à la liste des interfaces\n" +
+                    "     */\n");
+            output.write("    void initInterfaces(){\n");
+            output.write("    }\n");
+
+
+
+
+
+
+            output.write("    /*\n" +
+                    "     * Ajout des coordonnées aux différentes liste des coordonnées\n" +
+                    "     */\n");
+            output.write("    void initCoords(){\n");
+            output.write("    }\n");
+
 
 
             output.write("}\n");
