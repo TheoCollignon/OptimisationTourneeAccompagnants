@@ -1,19 +1,11 @@
 import Enums.*;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Configuration {
-    public int NBR_INTERFACES = 10;
-    public int NBR_APPRENANTS = 8;
-    public int NBR_CENTRES_FORMATION = 3;
-    public int NBR_SPECIALITES = 3;
-    public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;
-    public int NBR_FORMATIONS = 9;
     public int DIMENSION_ZONE_GEOGRAPHIQUE = 200;
 
     public double MULTIPLICATEUR_FORMATION;
@@ -29,7 +21,7 @@ public class Configuration {
         initFormations();
         initInterfaces();
         initCoords();
-        readMultiplicateurs();
+        readMultiplicateurFormation();
         this.SESSAD = Coord.SESSAD;
     }
 
@@ -93,7 +85,7 @@ public class Configuration {
 
 
 
-    void readMultiplicateurs(){
+    void readMultiplicateurFormation(){
         try {
             BufferedReader in = new BufferedReader(new FileReader("src/defineMultiplicateurs.txt"));
             String[] lines = new String[1];
