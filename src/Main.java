@@ -17,8 +17,9 @@ public class Main {
         o.begin();
 
         //Affichage de l'emploi du temps de chaque interface
+        System.out.println();
         for (Interface i:config.interfaces) {
-            p.printEDT(i);
+            p.printEDT(i, config.formations);
         }
     }
 }

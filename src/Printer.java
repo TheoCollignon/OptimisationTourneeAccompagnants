@@ -3,6 +3,7 @@ import Enums.Formation;
 import Enums.Interface;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Printer {
 
@@ -77,7 +78,7 @@ public class Printer {
 
     public void printInterface(Interface i){
         StringBuilder sb = new StringBuilder();
-        sb.append("Interface ").append(i.getId()).append(" : ");
+        sb.append("Interface ").append(i.getId()+1).append(" : ");
         sb.append("Spécialité ");
         switch (i.getIdSpecialite()){
             case 0:
@@ -183,17 +184,52 @@ public class Printer {
         sb.append(" | ");
 
         // Affichage de l'interface
-        if (i.getId()<10)sb.append("        ").append(i.getId()).append("         ");
-        else sb.append("        ").append(i.getId()).append("        ");
+        if (i.getId()<10)sb.append("        ").append(i.getId()+1).append("         ");
+        else sb.append("        ").append(i.getId()+1).append("        ");
         sb.append(" | ");
 
         // Affichage de l'apprenant
-        sb.append("        ").append(f.getIdAprennant());
+        sb.append("        ").append(f.getIdAprennant()+1);
         System.out.println(sb.toString());
     }
 
-    public void printEDT(Interface i) {
-        System.out.println("cc");
+    public void printEDT(Interface i, ArrayList<Formation> formations) {
+        formations.sort(Comparator.comparingInt(Formation::getJour));
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("Interface ").append(i.getId()+1).append(" : ");
+        sb.append("\n");
+
+        for (Formation f:formations) {
+            if (f.getIdInterface()==i.getId()) {
+                switch (f.getJour()){
+                    case 1:
+                        sb.append("Lundi    ");
+                        break;
+                    case 2:
+                        sb.append("Mardi    ");
+                        break;
+                    case 3:
+                        sb.append("Mercredi ");
+                        break;
+                    case 4:
+                        sb.append("Jeudi    ");
+                        break;
+                    case 5:
+                        sb.append("Vendredi ");
+                        break;
+                    case 6:
+                        sb.append("Samedi   ");
+                        break;
+                }
+                if (f.getHeureDebut()<10) sb.append(" (").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h)");
+                else sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h)");
+                sb.append(" - Apprenant ").append(f.getIdAprennant()+1);
+                sb.append("\n");
+            }
+        }
+
+        System.out.println(sb.toString());
     }
 }
 
