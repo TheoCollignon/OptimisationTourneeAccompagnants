@@ -150,7 +150,7 @@ public class Optimisation {
     }
 
     private double calcMultiplicateurDistance(Interface i) {
-        return (dimension*5) / i.getValeurJour();
+        return (dimension*5) / (i.getValeurJour() + i.getDistanceTotale());
     }
 
     private double calcMultiplicateurHoraire(Interface i) {
