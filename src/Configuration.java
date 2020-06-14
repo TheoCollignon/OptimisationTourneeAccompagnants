@@ -88,34 +88,25 @@ public class Configuration {
     void readMultiplicateurFormation(){
         try {
             BufferedReader in = new BufferedReader(new FileReader("src/defineMultiplicateurs.txt"));
-            String[] lines = new String[1];
             String line;
-            int i = 0;
-            while ((line = in.readLine()) != null) {
-                lines[i] = line;
-                i=i+1;
-            }
-            //System.out.println(Arrays.toString(lines));
+            line = in.readLine();
+
             boolean isDoublePoint = false;
-            StringBuilder value;
-            double[] values = new double[1];
-            i=0;
-            for (String m:lines) {
-                value = new StringBuilder();
-                isDoublePoint = false;
-                for (int j = 0; j < m.length(); j++) {
-                    if (isDoublePoint && m.charAt(j)!=' ') {
-                        value.append(m.charAt(j));
-                    }
-                    if (m.charAt(j) == ':') {
-                        isDoublePoint = true;
-                    }
+            StringBuilder value = new StringBuilder();
+            double multiplicateur = 0.0;
+
+            for (int j = 0; j < line.length(); j++) {
+                if (isDoublePoint && line.charAt(j)!=' ') {
+                    value.append(line.charAt(j));
                 }
-                values[i] = Double.parseDouble(value.toString());
-                i++;
+                if (line.charAt(j) == ':') {
+                    isDoublePoint = true;
+                }
             }
+            multiplicateur = Double.parseDouble(value.toString());
+
             in.close();
-            MULTIPLICATEUR_FORMATION = values[0];
+            MULTIPLICATEUR_FORMATION = multiplicateur;
 
         } catch (IOException e) {
             e.printStackTrace();
