@@ -33,6 +33,7 @@ public class InstanceGenerator {
     }
 
     private void writeEnumCoord() {
+
         try {
             output = new BufferedWriter(new FileWriter(FILE_COORD_NAME));
             output.write("package Enums;\n\n");
