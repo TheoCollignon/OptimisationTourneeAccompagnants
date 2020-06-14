@@ -27,11 +27,15 @@ public class Optimisation {
     public void begin() {
 
         int id = 0;
-        for (int day = 1; day < 2; day++) {
+        for (int day = 1; day < 7; day++) {
 
             ArrayList<Formation> formationsDuJour = new ArrayList<>();
             for (Formation f : formations) {
                 if (f.getJour() == day) formationsDuJour.add(f);
+            }
+
+            for (Interface i : interfaces) {
+                i.setValeurJour(0);
             }
 
             for (Formation f : formationsDuJour) {
@@ -52,7 +56,6 @@ public class Optimisation {
                 for (Interface i : interfacesCompatibles) {
 
                     i.setDistanceTemporaire(0);
-                    i.setValeurJour(0); // On reinitialise la variable
                     printer.printInterface(i);
 
                     // Domicile interface -> SESSAD
@@ -111,11 +114,18 @@ public class Optimisation {
                 // On trie la liste d'interface par sa valeur
                 interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
 
-                /* Verification sucess: Max to Min
+
+                /* //Verification sucess: Max to Min
                 System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
                 System.out.println("1:" + interfacesCompatibles.get(1).getValeurJour());
                 System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());
                 */
+
+                for(int i = 1; i < interfacesCompatibles.size(); i++)
+                {
+                    // On reinitialise la variable pour les interfaces non choisis
+                    interfacesCompatibles.get(i).setValeurJour(0);
+                }
 
                 // La première interface est choisie
                 interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
