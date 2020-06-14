@@ -149,7 +149,7 @@ public class Optimisation {
 
     private double calcMultiplicateurDistance(Interface i) {
         //System.out.println(i.getValeurJour()/ (dimension*5));
-        return i.getValeurJour()/ (dimension*5);
+        return (dimension*5) / i.getValeurJour();
     }
 
     private double calcMultiplicateurHoraire(Interface i) {
