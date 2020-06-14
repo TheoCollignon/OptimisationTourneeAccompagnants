@@ -102,21 +102,21 @@ public class Optimisation {
                     //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
                     //TODO: Multiplicateur heure de travail (MALUS plus le nombre d'heure est important)
 
-                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
-                    System.out.println("avant horaire "+i.getValeurJour());
-                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
+                    //System.out.println("avant distance "+i.getValeurJour());
+                    //System.out.println("avant distance "+i.getValeurJour() +" * "+calcMultiplicateurDistance(i) + " = " + i.getValeurJour()*calcMultiplicateurDistance(i));
+                    i.setValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
+                    //System.out.println("avant horaire "+i.getValeurJour());
+                    i.setValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
                     //Multiplicateur de spécialité
-                    System.out.println("avant formation "+i.getValeurJour());
+                    //System.out.println("avant formation "+i.getValeurJour());
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
                         //System.out.println("Même spécialité ! / ");
-                        i.incrValeurJour(i.getValeurJour()*multiplicateurFormation);
+                        i.setValeurJour(i.getValeurJour()*multiplicateurFormation);
                     }
+                    System.out.println("final "+i.getValeurJour());
                     /*else {
                         System.out.println("Autre spécialité ! / ");
                     }*/
-
-
-
 
 
 
@@ -148,8 +148,7 @@ public class Optimisation {
     }
 
     private double calcMultiplicateurDistance(Interface i) {
-        System.out.println(i.getValeurJour()/ (dimension*5));
-        //return dimension+ 0.1 - ( i.getValeurJour()/ dimension);
+        //System.out.println(i.getValeurJour()/ (dimension*5));
         return i.getValeurJour()/ (dimension*5);
     }
 
