@@ -87,14 +87,15 @@ public class Configuration {
 
     void readMultiplicateurFormation(){
         try {
+            // Ouverture du fichier
             BufferedReader in = new BufferedReader(new FileReader("src/defineMultiplicateurs.txt"));
-            String line;
-            line = in.readLine();
+            String line = in.readLine(); // Lecture
+            in.close();
 
             boolean isDoublePoint = false;
             StringBuilder value = new StringBuilder();
-            double multiplicateur = 0.0;
 
+            // Récupération de la valeur
             for (int j = 0; j < line.length(); j++) {
                 if (isDoublePoint && line.charAt(j)!=' ') {
                     value.append(line.charAt(j));
@@ -103,10 +104,8 @@ public class Configuration {
                     isDoublePoint = true;
                 }
             }
-            multiplicateur = Double.parseDouble(value.toString());
 
-            in.close();
-            MULTIPLICATEUR_FORMATION = multiplicateur;
+            MULTIPLICATEUR_FORMATION = Double.parseDouble(value.toString());
 
         } catch (IOException e) {
             e.printStackTrace();
