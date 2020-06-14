@@ -17,7 +17,6 @@ public class Configuration {
     public int DIMENSION_ZONE_GEOGRAPHIQUE = 200;
 
     public double MULTIPLICATEUR_FORMATION;
-    public double MULTIPLICATEUR_DISTANCE;
     public double MULTIPLICATEUR_HORAIRE;
 
     public ArrayList<Formation> formations = new ArrayList<>();
@@ -98,7 +97,7 @@ public class Configuration {
     void readMultiplicateurs(){
         try {
             BufferedReader in = new BufferedReader(new FileReader("src/defineMultiplicateurs.txt"));
-            String[] lines = new String[3];
+            String[] lines = new String[2];
             String line;
             int i = 0;
             while ((line = in.readLine()) != null) {
@@ -108,7 +107,7 @@ public class Configuration {
             //System.out.println(Arrays.toString(lines));
             boolean isDoublePoint = false;
             StringBuilder value;
-            double[] values = new double[3];
+            double[] values = new double[2];
             i=0;
             for (String m:lines) {
                 value = new StringBuilder();
@@ -126,8 +125,7 @@ public class Configuration {
             }
             in.close();
             MULTIPLICATEUR_FORMATION = values[0];
-            MULTIPLICATEUR_DISTANCE = values[1];
-            MULTIPLICATEUR_HORAIRE = values[2];
+            MULTIPLICATEUR_HORAIRE = values[1];
 
         } catch (IOException e) {
             e.printStackTrace();

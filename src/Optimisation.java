@@ -15,7 +15,6 @@ public class Optimisation {
     private Coord coordSESSAD;
 
     private double multiplicateurFormation;
-    private double multiplicateurDistance;
     private double multiplicateurHoraire;
     private double dimension;
 
@@ -28,7 +27,6 @@ public class Optimisation {
         this.coordsApprenants = config.coordsApprenants;
         this.coordSESSAD = config.SESSAD;
         this.multiplicateurFormation = config.MULTIPLICATEUR_FORMATION;
-        this.multiplicateurDistance = config.MULTIPLICATEUR_DISTANCE;
         this.multiplicateurHoraire = config.MULTIPLICATEUR_HORAIRE;
         this.dimension = config.DIMENSION_ZONE_GEOGRAPHIQUE;
     }
@@ -109,13 +107,14 @@ public class Optimisation {
 
                     //Multiplicateur de spécialité
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
-                        System.out.println("Même spécialité ! / ");
+                        //System.out.println("Même spécialité ! / ");
                         i.incrValeurJour(i.getValeurJour()*multiplicateurFormation);
                     }
-                    else {
+                    /*else {
                         System.out.println("Autre spécialité ! / ");
-                        i.incrValeurJour(i.getValeurJour()*multiplicateurDistance);
-                    }
+                    }*/
+
+                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
 
 
                     System.out.println();
@@ -124,11 +123,11 @@ public class Optimisation {
                 interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
 
 
-                /* //Verification sucess: Max to Min
-                System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
+                //Verification sucess: Max to Min
+                /*System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
                 System.out.println("1:" + interfacesCompatibles.get(1).getValeurJour());
-                System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());
-                */
+                System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());*/
+
 
                 for(int i = 1; i < interfacesCompatibles.size(); i++)
                 {
@@ -143,6 +142,10 @@ public class Optimisation {
                 System.out.println();
             }
         }
+    }
+
+    private double calcMultiplicateurDistance(Interface i) {
+        return dimension+ 0.1 - ( i.getValeurJour()/ dimension);
     }
 
     public double calcDistance(Coord c1, Coord c2) {
