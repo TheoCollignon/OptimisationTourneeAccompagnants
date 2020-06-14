@@ -253,7 +253,8 @@ public class InstanceGenerator {
             output.write("    public int NBR_CENTRES_FORMATION = "+3+";\n");
             output.write("    public int NBR_SPECIALITES = "+3+";\n");
             output.write("    public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;\n");
-            output.write("    public int NBR_FORMATIONS = "+NBR_FORMATIONS+";\n\n");
+            output.write("    public int NBR_FORMATIONS = "+NBR_FORMATIONS+";\n");
+            output.write("    public int DIMENSION_ZONE_GEOGRAPHIQUE = "+DIMENSION_ZONE_GEOGRAPHIQUE+";\n\n");
 
             output.write("    public ArrayList<Formation> formations = new ArrayList<>();\n");
             output.write("    public ArrayList<Interface> interfaces = new ArrayList<>();\n");

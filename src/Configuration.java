@@ -14,6 +14,7 @@ public class Configuration {
     public int NBR_SPECIALITES = 3;
     public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;
     public int NBR_FORMATIONS = 9;
+    public int DIMENSION_ZONE_GEOGRAPHIQUE = 200;
 
     public double MULTIPLICATEUR_FORMATION;
     public double MULTIPLICATEUR_DISTANCE;

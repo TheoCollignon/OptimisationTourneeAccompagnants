@@ -17,6 +17,7 @@ public class Optimisation {
     private double multiplicateurFormation;
     private double multiplicateurDistance;
     private double multiplicateurHoraire;
+    private double dimension;
 
     public Optimisation(Configuration config, Printer printer) {
         this.printer = printer;
@@ -29,6 +30,7 @@ public class Optimisation {
         this.multiplicateurFormation = config.MULTIPLICATEUR_FORMATION;
         this.multiplicateurDistance = config.MULTIPLICATEUR_DISTANCE;
         this.multiplicateurHoraire = config.MULTIPLICATEUR_HORAIRE;
+        this.dimension = config.DIMENSION_ZONE_GEOGRAPHIQUE;
     }
 
     public void begin() {
@@ -104,7 +106,7 @@ public class Optimisation {
                     //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
                     //TODO: Multiplicateur heure de travail (MALUS plus le nombre d'heure est important)
 
-                    /*
+
                     //Multiplicateur de spécialité
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
                         System.out.println("Même spécialité ! / ");
@@ -112,9 +114,9 @@ public class Optimisation {
                     }
                     else {
                         System.out.println("Autre spécialité ! / ");
-                        i.incrValeurJour(i.getValeurJour()*MULTIPLICATEUR2);
+                        i.incrValeurJour(i.getValeurJour()*multiplicateurDistance);
                     }
-                    */
+
 
                     System.out.println();
                 }
