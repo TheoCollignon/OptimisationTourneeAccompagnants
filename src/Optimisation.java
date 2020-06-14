@@ -104,7 +104,7 @@ public class Optimisation {
 
                     //System.out.println("avant distance "+i.getValeurJour());
                     //System.out.println("avant distance "+i.getValeurJour() +" * "+calcMultiplicateurDistance(i) + " = " + i.getValeurJour()*calcMultiplicateurDistance(i));
-                    i.setValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
+                    i.setValeurJour(calcMultiplicateurDistance(i));
                     //System.out.println("avant horaire "+i.getValeurJour());
                     i.setValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
                     //Multiplicateur de spécialité
