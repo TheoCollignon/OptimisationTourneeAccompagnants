@@ -2,6 +2,7 @@ import Enums.Coord;
 import Enums.Formation;
 import Enums.Interface;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -60,7 +61,22 @@ public class Optimisation {
                     if ((i.getIdCompetence() == f.getIdCompetence())
                             && (i.getTempsTravail() + f.getDuree() <= 35)
                             && (i.getTempsTravailJour() + f.getDuree() <= 8)) {
-                        interfacesCompatibles.add(i);
+                        ArrayList<Formation> formationsDejaFaites = new ArrayList<>();
+                        for (Formation f2:formations) {
+                            if (f2.getIdInterface() == i.getId() && f2.getJour()==f.getJour()) {
+                                formationsDejaFaites.add(f2);
+                            }
+                        }
+
+                        if (formationsDejaFaites.size()==0) interfacesCompatibles.add(i);
+
+                        else for (Formation f2:formationsDejaFaites) {
+                            if (!(f.getHeureDebut()>=f2.getHeureDebut() && f.getHeureDebut()<=f2.getHeureFin() ||
+                                    f.getHeureFin()>=f2.getHeureDebut() && f.getHeureFin()<=f2.getHeureFin())) {
+                                interfacesCompatibles.add(i);
+                            }
+                        }
+
                     }
                 }
 
