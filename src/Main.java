@@ -1,16 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        Configuration config = new Configuration();
-        Printer p = new Printer();
-        System.out.println("\nProblème d'optimisation :\n");
+        Configuration config = new Configuration(); // Récupération des données du projet
+        Printer p = new Printer(); // Création du "fichier d'affichage"
 
-
-        System.out.println("Nombre d'interfaces : "+ config.NBR_INTERFACES +"\nNombre d'apprenants : "+ config.NBR_APPRENANTS +"\nNombre de noeuds    : "+ config.NBR_NODES+"\n");
+        // Affichage des différentes données
         p.printFormations(config.formations);
         p.printInterfaces(config.interfaces);
         p.printCoords(config.coordsCentres,config.coordsInterfaces,config.coordsApprenants);
 
-
+        //Appel de l'algorithme de recherche
         Optimisation o = new Optimisation(config, p);
         o.begin();
     }
