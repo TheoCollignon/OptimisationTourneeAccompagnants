@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class InstanceGenerator {
 
-    public static int NBR_APPRENANTS = 3;
+    public static int NBR_APPRENANTS = 25;
     public static int NBR_COURS_PAR_SEMAINE = 4; // max 10 demi-journées par apprenant
 
     public static int DIMENSION_ZONE_GEOGRAPHIQUE = 2000;

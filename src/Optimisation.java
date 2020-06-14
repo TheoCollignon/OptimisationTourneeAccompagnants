@@ -68,14 +68,18 @@ public class Optimisation {
                             }
                         }
 
-                        if (formationsDejaFaites.size()==0) interfacesCompatibles.add(i);
+                        boolean ajoutable = true;
 
-                        else for (Formation f2:formationsDejaFaites) {
-                            if (!(f.getHeureDebut()>=f2.getHeureDebut() && f.getHeureDebut()<=f2.getHeureFin() ||
-                                    f.getHeureFin()>=f2.getHeureDebut() && f.getHeureFin()<=f2.getHeureFin())) {
-                                interfacesCompatibles.add(i);
+                        for (Formation formationFaite:formationsDejaFaites) {
+                            if (f.getHeureDebut() >= formationFaite.getHeureDebut() && f.getHeureDebut() <= formationFaite.getHeureFin()) {
+                                ajoutable = false;
+                            }
+                            if (f.getHeureFin() >= formationFaite.getHeureDebut() && f.getHeureFin() <= formationFaite.getHeureFin()) {
+                                ajoutable = false;
                             }
                         }
+
+                        if (ajoutable) interfacesCompatibles.add(i);
 
                     }
                 }

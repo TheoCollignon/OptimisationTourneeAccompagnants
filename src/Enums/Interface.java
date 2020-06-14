@@ -1,9 +1,36 @@
 package Enums;
 
 public enum Interface {
-    i1(0,-1,1), /* interface 1 */
-    i2(1,0,1), /* interface 2 */
-    i3(2,-1,0); /* interface 3 */
+    i1(0,2,0), /* interface 1 */
+    i2(1,-1,0), /* interface 2 */
+    i3(2,-1,1), /* interface 3 */
+    i4(3,1,1), /* interface 4 */
+    i5(4,-1,1), /* interface 5 */
+    i6(5,0,1), /* interface 6 */
+    i7(6,2,1), /* interface 7 */
+    i8(7,2,0), /* interface 8 */
+    i9(8,-1,0), /* interface 9 */
+    i10(9,1,1), /* interface 10 */
+    i11(10,0,1), /* interface 11 */
+    i12(11,2,0), /* interface 12 */
+    i13(12,1,0), /* interface 13 */
+    i14(13,1,0), /* interface 14 */
+    i15(14,2,1), /* interface 15 */
+    i16(15,0,0), /* interface 16 */
+    i17(16,2,0), /* interface 17 */
+    i18(17,2,1), /* interface 18 */
+    i19(18,-1,1), /* interface 19 */
+    i20(19,1,1), /* interface 20 */
+    i21(20,2,0), /* interface 21 */
+    i22(21,0,1), /* interface 22 */
+    i23(22,2,0), /* interface 23 */
+    i24(23,-1,1), /* interface 24 */
+    i25(24,0,1), /* interface 25 */
+    i26(25,1,1), /* interface 26 */
+    i27(26,1,0), /* interface 27 */
+    i28(27,-1,0), /* interface 28 */
+    i29(28,2,0), /* interface 29 */
+    i30(29,-1,0); /* interface 30 */
 
     private int id;
     private int idSpecialite; // (Sans : -1 / Menuiserie : 0 / Electricité : 1 / Mécanique : 2)
@@ -38,7 +65,7 @@ public enum Interface {
     }
 
     public void incrTempsTravail(int incr) {
-        this.tempsTravail = incr;
+        this.tempsTravail += incr;
         incrTempsTravailJour(incr);
     }
 

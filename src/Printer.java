@@ -228,7 +228,7 @@ public class Printer {
                 sb.append("\n");
             }
         }
-
+        sb.append("Temps de travail total : ").append(i.getTempsTravail()).append("\n");
         System.out.println(sb.toString());
     }
 }
