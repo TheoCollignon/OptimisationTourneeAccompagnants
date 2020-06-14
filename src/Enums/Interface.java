@@ -54,7 +54,6 @@ public enum Interface{
 
     public void incrTempsTravail(int incr) {
         this.tempsTravail += incr;
-        System.out.println("J'INCREMENTE : "+this.getTempsTravail()+" id : "+id);
         incrTempsTravailJour(incr);
     }
 

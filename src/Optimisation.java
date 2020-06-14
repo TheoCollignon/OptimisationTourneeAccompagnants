@@ -103,11 +103,10 @@ public class Optimisation {
                     //TODO: Multiplicateur heure de travail (MALUS plus le nombre d'heure est important)
 
                     i.incrValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
-                    //System.out.println("avant horaire "+i.getValeurJour());
+                    System.out.println("avant horaire "+i.getValeurJour());
                     i.incrValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
-
                     //Multiplicateur de spécialité
-                    //System.out.println("avant formation "+i.getValeurJour());
+                    System.out.println("avant formation "+i.getValeurJour());
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
                         //System.out.println("Même spécialité ! / ");
                         i.incrValeurJour(i.getValeurJour()*multiplicateurFormation);
@@ -157,8 +156,8 @@ public class Optimisation {
         if ((double)i.getTempsTravail() / 35 == 0) {
             return 1;
         } else {
-            //System.out.println("HORAIRE : "+(35/( (double)i.getTempsTravail() / 35)));
-            return 35 / ( (double)i.getTempsTravail() / 35);
+            System.out.println((double)i.getTempsTravail()/35);
+            return (double)i.getTempsTravail()/35;
         }
     }
 
