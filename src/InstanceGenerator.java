@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 
 public class InstanceGenerator {
 
-    public static int NBR_APPRENANTS = 10;
+    public static int NBR_APPRENANTS = 25;
     public static int NBR_COURS_PAR_SEMAINE = 4; // max 10 demi-journées par apprenant
 
-    public static int DIMENSION_ZONE_GEOGRAPHIQUE = 200;
+    public static int DIMENSION_ZONE_GEOGRAPHIQUE = 2000;
 
     public static int NBR_INTERFACES = (int) (NBR_APPRENANTS * 1.2);
     public static int NBR_FORMATIONS = NBR_APPRENANTS * NBR_COURS_PAR_SEMAINE;
@@ -247,15 +247,13 @@ public class InstanceGenerator {
             output = new BufferedWriter(new FileWriter(FILE_CONF_NAME));
             output.write("import Enums.*;\n");
             output.write("import java.util.ArrayList;\n\n");
+            output.write("import java.io.FileReader;\n" +
+                    "import java.io.BufferedReader;\n" +
+                    "import java.io.IOException;\n\n");
 
             output.write("public class Configuration {\n");
-            output.write("    public int NBR_INTERFACES = "+NBR_INTERFACES+";\n");
-            output.write("    public int NBR_APPRENANTS = "+NBR_APPRENANTS+";\n");
-            output.write("    public int NBR_CENTRES_FORMATION = "+3+";\n");
-            output.write("    public int NBR_SPECIALITES = "+3+";\n");
-            output.write("    public int NBR_NODES = NBR_CENTRES_FORMATION+NBR_INTERFACES+NBR_APPRENANTS;\n");
-            output.write("    public int NBR_FORMATIONS = "+NBR_FORMATIONS+";\n");
             output.write("    public int DIMENSION_ZONE_GEOGRAPHIQUE = "+DIMENSION_ZONE_GEOGRAPHIQUE+";\n\n");
+            output.write("    public double MULTIPLICATEUR_FORMATION;\n\n");
 
             output.write("    public ArrayList<Formation> formations = new ArrayList<>();\n");
             output.write("    public ArrayList<Interface> interfaces = new ArrayList<>();\n");
@@ -268,6 +266,7 @@ public class InstanceGenerator {
                     "        initFormations();\n" +
                     "        initInterfaces();\n" +
                     "        initCoords();\n" +
+                    "        readMultiplicateurFormation();\n" +
                     "        this.SESSAD = Coord.SESSAD;\n" +
                     "    }\n\n");
 
@@ -313,7 +312,34 @@ public class InstanceGenerator {
             }
             output.write("    }\n");
 
-
+            output.write("\n" +
+                    "\n" +
+                    "    void readMultiplicateurFormation(){\n" +
+                    "        try {\n" +
+                    "            // Ouverture du fichier\n" +
+                    "            BufferedReader in = new BufferedReader(new FileReader(\"src/defineMultiplicateurs.txt\"));\n" +
+                    "            String line = in.readLine(); // Lecture\n" +
+                    "            in.close();\n" +
+                    "\n" +
+                    "            boolean isDoublePoint = false;\n" +
+                    "            StringBuilder value = new StringBuilder();\n" +
+                    "\n" +
+                    "            // Récupération de la valeur\n" +
+                    "            for (int j = 0; j < line.length(); j++) {\n" +
+                    "                if (isDoublePoint && line.charAt(j)!=' ') {\n" +
+                    "                    value.append(line.charAt(j));\n" +
+                    "                }\n" +
+                    "                if (line.charAt(j) == ':') {\n" +
+                    "                    isDoublePoint = true;\n" +
+                    "                }\n" +
+                    "            }\n" +
+                    "\n" +
+                    "            MULTIPLICATEUR_FORMATION = Double.parseDouble(value.toString());\n" +
+                    "\n" +
+                    "        } catch (IOException e) {\n" +
+                    "            e.printStackTrace();\n" +
+                    "        }\n" +
+                    "    }\n");
 
             output.write("}\n");
             output.close();

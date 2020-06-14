@@ -41,6 +41,7 @@ public class Optimisation {
             formationsDuJour.sort(Comparator.comparingInt(Formation::getHeureDebut));
             for (Interface i : interfaces) {
                 i.setValeurJour(0);
+                i.setTempsTravailJour(0);
             }
 
             for (Formation f : formationsDuJour) {
@@ -137,12 +138,17 @@ public class Optimisation {
                 }
 
                 // La première interface est choisie
-                interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
-                interfacesCompatibles.get(0).incrDistanceTotale(interfacesCompatibles.get(0).getDistanceTemporaire());
+                if (interfacesCompatibles.size()>0) {
+                    interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
+                    interfacesCompatibles.get(0).incrDistanceTotale(interfacesCompatibles.get(0).getDistanceTemporaire());
+                    printer.selection(f, interfacesCompatibles.get(0));
+                } else {
+                    System.out.println("eh y'a rien");
+                }
 
                 //printer.printInterface(interfacesCompatibles.get(0));
 
-                printer.selection(f, interfacesCompatibles.get(0));
+
             }
         }
     }

@@ -156,7 +156,7 @@ public class Printer {
                 sb.append("Vendredi ");
                 break;
             case 6:
-                sb.append("Samedi    ");
+                sb.append("Samedi   ");
                 break;
         }
         if (f.getHeureDebut()<10) sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h)  : ");
@@ -174,7 +174,10 @@ public class Printer {
                 sb.append("mécanique  ");
                 break;
         }
-        sb.append(" sera effectuée par l'interface ").append(i.getId()).append(" avec l'apprenant ").append(f.getIdAprennant()).append(".");
+        sb.append(" sera effectuée par l'interface ");
+        if (i.getId()<10)sb.append(i.getId()).append(" ");
+        else sb.append(i.getId());
+        sb.append(" avec l'apprenant ").append(f.getIdAprennant()).append(".");
         System.out.println(sb.toString());
     }
 }
