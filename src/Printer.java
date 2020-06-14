@@ -162,22 +162,25 @@ public class Printer {
         if (f.getHeureDebut()<10) sb.append(" (").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) | ");
         else sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) | ");
 
-        sb.append("La formation de spécialité ");
         switch (f.getIdSpecialite()){
             case 0:
-                sb.append("menuiserie ");
+                sb.append("    Menuiserie    ");
                 break;
             case 1:
-                sb.append("électricité");
+                sb.append("    Electricité   ");
                 break;
             case 2:
-                sb.append("mécanique  ");
+                sb.append("     Mécanique    ");
                 break;
         }
-        sb.append(" sera effectuée par l'interface ");
-        if (i.getId()<10)sb.append(i.getId()).append(" ");
-        else sb.append(i.getId());
-        sb.append(" avec l'apprenant ").append(f.getIdAprennant()).append(".");
+        sb.append(" | ");
+        if (i.getIdCompetence()==0) sb.append("Langage des signes");
+        else sb.append("     Codage LPC   ");
+        sb.append(" | ");
+        if (i.getId()<10)sb.append("        ").append(i.getId()).append("         ");
+        else sb.append("        ").append(i.getId()).append("        ");
+        sb.append(" | ");
+        sb.append("        ").append(f.getIdAprennant()).append("");
         System.out.println(sb.toString());
     }
 }
