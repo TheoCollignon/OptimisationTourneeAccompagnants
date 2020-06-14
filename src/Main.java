@@ -6,7 +6,9 @@ public class Main {
         // Affichage des différentes données
         p.printFormations(config.formations);
         p.printInterfaces(config.interfaces);
-        p.printCoords(config.coordsCentres,config.coordsInterfaces,config.coordsApprenants);
+       //p.printCoords(config.coordsCentres,config.coordsInterfaces,config.coordsApprenants);
+
+        System.out.println();
 
         //Appel de l'algorithme de recherche
         Optimisation o = new Optimisation(config, p);

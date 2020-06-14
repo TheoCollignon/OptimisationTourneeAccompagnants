@@ -136,4 +136,45 @@ public class Printer {
     public void printCoordApprenant(Coord c, int id){
         System.out.println("Point de départ Apprenant " + id + "     : (" + c.getX() + ", " + c.getY() + ")");
     }
+
+    public void selection(Formation f, Interface i) {
+        StringBuilder sb = new StringBuilder();
+        switch (f.getJour()){
+            case 1:
+                sb.append("Lundi    ");
+                break;
+            case 2:
+                sb.append("Mardi    ");
+                break;
+            case 3:
+                sb.append("Mercredi ");
+                break;
+            case 4:
+                sb.append("Jeudi    ");
+                break;
+            case 5:
+                sb.append("Vendredi ");
+                break;
+            case 6:
+                sb.append("Samedi    ");
+                break;
+        }
+        if (f.getHeureDebut()<10) sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h)  : ");
+        else sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) : ");
+
+        sb.append("La formation de spécialité ");
+        switch (f.getIdSpecialite()){
+            case 0:
+                sb.append("menuiserie ");
+                break;
+            case 1:
+                sb.append("électricité");
+                break;
+            case 2:
+                sb.append("mécanique  ");
+                break;
+        }
+        sb.append(" sera effectuée par l'interface ").append(i.getId()).append(" avec l'apprenant ").append(f.getIdAprennant()).append(".");
+        System.out.println(sb.toString());
+    }
 }

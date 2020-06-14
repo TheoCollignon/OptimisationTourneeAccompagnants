@@ -38,15 +38,15 @@ public class Optimisation {
             for (Formation f : formations) {
                 if (f.getJour() == day) formationsDuJour.add(f);
             }
-
+            formationsDuJour.sort(Comparator.comparingInt(Formation::getHeureDebut));
             for (Interface i : interfaces) {
                 i.setValeurJour(0);
             }
 
             for (Formation f : formationsDuJour) {
 
-                printer.printFormation(f, id);
-                System.out.println("Interfaces compatibles : ");
+                //printer.printFormation(f, id);
+                //System.out.println("Interfaces compatibles : ");
                 ArrayList<Interface> interfacesCompatibles = new ArrayList<>();
 
                 for (Interface i : interfaces) {
@@ -61,7 +61,7 @@ public class Optimisation {
                 for (Interface i : interfacesCompatibles) {
 
                     i.setDistanceTemporaire(0);
-                    printer.printInterface(i);
+                    //printer.printInterface(i);
 
                     // Domicile interface -> SESSAD
                     int idInterface = i.getId();
@@ -113,23 +113,21 @@ public class Optimisation {
                         //System.out.println("Même spécialité ! / ");
                         i.setValeurJour(i.getValeurJour()*multiplicateurFormation);
                     }
-                    System.out.println("final "+i.getValeurJour());
+                    //System.out.println("final "+i.getValeurJour());
                     /*else {
                         System.out.println("Autre spécialité ! / ");
                     }*/
 
-
-
-                    System.out.println();
+                    //System.out.println();
                 }
                 // On trie la liste d'interface par sa valeur
                 interfacesCompatibles.sort(Comparator.comparingDouble(Interface::getValeurJour).reversed());
 
 
                 //Verification sucess: Max to Min
-                //System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
-                //System.out.println("1:" + interfacesCompatibles.get(1).getValeurJour());
-                //System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());
+                /*System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
+                System.out.println("1:" + interfacesCompatibles.get(1).getValeurJour());
+                System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());*/
 
 
                 for(int i = 1; i < interfacesCompatibles.size(); i++)
@@ -142,7 +140,9 @@ public class Optimisation {
                 interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
                 interfacesCompatibles.get(0).incrDistanceTotale(interfacesCompatibles.get(0).getDistanceTemporaire());
 
-                System.out.println();
+                //printer.printInterface(interfacesCompatibles.get(0));
+
+                printer.selection(f, interfacesCompatibles.get(0));
             }
         }
     }
