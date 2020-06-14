@@ -139,6 +139,7 @@ public class Printer {
 
     public void selection(Formation f, Interface i) {
         StringBuilder sb = new StringBuilder();
+        // Affichage du jour puis de l'heure (ci-dessous)
         switch (f.getJour()){
             case 1:
                 sb.append("   Lundi  ");
@@ -162,22 +163,33 @@ public class Printer {
         if (f.getHeureDebut()<10) sb.append(" (").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) | ");
         else sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) | ");
 
-        sb.append("La formation de spécialité ");
+        // Affichage de la spécialité
         switch (f.getIdSpecialite()){
             case 0:
-                sb.append("menuiserie ");
+                sb.append("    Menuiserie    ");
                 break;
             case 1:
-                sb.append("électricité");
+                sb.append("    Electricité   ");
                 break;
             case 2:
-                sb.append("mécanique  ");
+                sb.append("     Mécanique    ");
                 break;
         }
-        sb.append(" sera effectuée par l'interface ");
-        if (i.getId()<10)sb.append(i.getId()).append(" ");
-        else sb.append(i.getId());
-        sb.append(" avec l'apprenant ").append(f.getIdAprennant()).append(".");
+        sb.append(" | ");
+
+        // Affichage de la compétence
+        if (i.getIdCompetence()==0) sb.append("Langage des signes");
+        else sb.append("     Codage LPC   ");
+        sb.append(" | ");
+
+        // Affichage de l'interface
+        if (i.getId()<10)sb.append("        ").append(i.getId()).append("         ");
+        else sb.append("        ").append(i.getId()).append("        ");
+        sb.append(" | ");
+
+        // Affichage de l'apprenant
+        sb.append("        ").append(f.getIdAprennant());
         System.out.println(sb.toString());
     }
 }
+
