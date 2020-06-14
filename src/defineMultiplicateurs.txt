@@ -1,0 +1,3 @@
+Multiplicateur formation : 18
+Multiplicateur distance : 4
+Multiplicateur heure de travail : 0.25
