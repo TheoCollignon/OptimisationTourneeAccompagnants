@@ -123,6 +123,7 @@ public class Optimisation {
                     interfacesCompatibles.get(0).incrTempsTravail(f.getDuree());
                     interfacesCompatibles.get(0).incrDistanceTotale(interfacesCompatibles.get(0).getDistanceTemporaire());
                     printer.selection(f, interfacesCompatibles.get(0));
+                    f.setIdInterface(interfacesCompatibles.get(0).getId());
                 }
             }
         }
