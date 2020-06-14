@@ -14,6 +14,10 @@ public class Optimisation {
     private ArrayList<Coord> coordsApprenants;
     private Coord coordSESSAD;
 
+    private double multiplicateurFormation;
+    private double multiplicateurDistance;
+    private double multiplicateurHoraire;
+
     public Optimisation(Configuration config, Printer printer) {
         this.printer = printer;
         this.formations = config.formations;
@@ -22,6 +26,9 @@ public class Optimisation {
         this.coordsInterfaces = config.coordsInterfaces;
         this.coordsApprenants = config.coordsApprenants;
         this.coordSESSAD = config.SESSAD;
+        this.multiplicateurFormation = config.MULTIPLICATEUR_FORMATION;
+        this.multiplicateurDistance = config.MULTIPLICATEUR_DISTANCE;
+        this.multiplicateurHoraire = config.MULTIPLICATEUR_HORAIRE;
     }
 
     public void begin() {
@@ -101,7 +108,7 @@ public class Optimisation {
                     //Multiplicateur de spécialité
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
                         System.out.println("Même spécialité ! / ");
-                        i.incrValeurJour(i.getValeurJour()*MULTIPLICATEUR);
+                        i.incrValeurJour(i.getValeurJour()*multiplicateurFormation);
                     }
                     else {
                         System.out.println("Autre spécialité ! / ");
