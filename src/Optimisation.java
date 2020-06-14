@@ -102,8 +102,12 @@ public class Optimisation {
                     //TODO: Multiplier la valeur du jour actuelle (que distance) par le multiplicateur de distance
                     //TODO: Multiplicateur heure de travail (MALUS plus le nombre d'heure est important)
 
+                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
+                    System.out.println("avant horaire "+i.getValeurJour());
+                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
 
                     //Multiplicateur de spécialité
+                    System.out.println("avant formation "+i.getValeurJour());
                     if (i.getIdSpecialite() == f.getIdSpecialite()) {
                         //System.out.println("Même spécialité ! / ");
                         i.incrValeurJour(i.getValeurJour()*multiplicateurFormation);
@@ -112,8 +116,7 @@ public class Optimisation {
                         System.out.println("Autre spécialité ! / ");
                     }*/
 
-                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
-                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
+
 
 
 
@@ -125,9 +128,9 @@ public class Optimisation {
 
 
                 //Verification sucess: Max to Min
-                /*System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
+                System.out.println("0:" + interfacesCompatibles.get(0).getValeurJour());
                 System.out.println("1:" + interfacesCompatibles.get(1).getValeurJour());
-                System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());*/
+                System.out.println("2:" + interfacesCompatibles.get(2).getValeurJour());
 
 
                 for(int i = 1; i < interfacesCompatibles.size(); i++)
@@ -146,10 +149,12 @@ public class Optimisation {
     }
 
     private double calcMultiplicateurDistance(Interface i) {
+        //System.out.println(dimension+ 0.1 - ( i.getValeurJour()/ dimension));
         return dimension+ 0.1 - ( i.getValeurJour()/ dimension);
     }
 
     private double calcMultiplicateurHoraire(Interface i) {
+        System.out.println("HORAIRE : "+(35+ 0.1 - (double)( i.getTempsTravail() / 35)));
         return 35+ 0.1 - (double)( i.getTempsTravail() / 35);
     }
 
