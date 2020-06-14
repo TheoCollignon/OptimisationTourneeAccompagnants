@@ -148,15 +148,16 @@ public class Optimisation {
     }
 
     private double calcMultiplicateurDistance(Interface i) {
-        //System.out.println(dimension+ 0.1 - ( i.getValeurJour()/ dimension));
-        return dimension+ 0.1 - ( i.getValeurJour()/ dimension);
+        System.out.println(i.getValeurJour()/ dimension);
+        //return dimension+ 0.1 - ( i.getValeurJour()/ dimension);
+        return i.getValeurJour()/ dimension;
     }
 
     private double calcMultiplicateurHoraire(Interface i) {
         if ((double)i.getTempsTravail() / 35 == 0) {
             return 1;
         } else {
-            System.out.println((double)i.getTempsTravail()/35);
+            //System.out.println((double)i.getTempsTravail()/35);
             return (double)i.getTempsTravail()/35;
         }
     }
