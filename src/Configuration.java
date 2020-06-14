@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Configuration {
-    public int DIMENSION_ZONE_GEOGRAPHIQUE = 200;
+    public int DIMENSION_ZONE_GEOGRAPHIQUE = 1600;
 
     public double MULTIPLICATEUR_FORMATION;
 
