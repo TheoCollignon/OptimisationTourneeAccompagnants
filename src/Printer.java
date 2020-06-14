@@ -3,6 +3,7 @@ import Enums.Formation;
 import Enums.Interface;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Printer {
@@ -194,7 +195,7 @@ public class Printer {
     }
 
     public void printEDT(Interface i, ArrayList<Formation> formations) {
-        formations.sort(Comparator.comparingInt(Formation::getJour));
+        formations.sort(Comparator.comparing(Formation::getJour).thenComparing(Formation::getHeureDebut));
         StringBuilder sb = new StringBuilder();
 
         sb.append("Interface ").append(i.getId()+1).append(" : ");

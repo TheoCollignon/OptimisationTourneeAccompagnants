@@ -157,7 +157,7 @@ public class Optimisation {
         if ((double)i.getTempsTravail() / 35 == 0) {
             return 1;
         } else {
-            return (double)i.getTempsTravail()/35;
+            return (35-(double)i.getTempsTravail())/35;
         }
     }
 
