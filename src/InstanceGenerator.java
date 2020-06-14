@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 public class InstanceGenerator {
 
-    public static int NBR_APPRENANTS = 25;
+    public static int NBR_APPRENANTS = 3;
     public static int NBR_COURS_PAR_SEMAINE = 4; // max 10 demi-journées par apprenant
 
     public static int DIMENSION_ZONE_GEOGRAPHIQUE = 2000;
@@ -112,9 +112,9 @@ public class InstanceGenerator {
                 }
 
                 if (i < NBR_FORMATIONS-1) {
-                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+","+hdebut+","+hfin+"), /* formation " + (i + 1) + " */\n");
+                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+","+hdebut+","+hfin+",-1), /* formation " + (i + 1) + " */\n");
                 } else {
-                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+","+hdebut+","+hfin+"); /* formation " + (i + 1) + " */\n\n");
+                    output.write("    f" + (i + 1) + "("+apprenant+","+spe+","+competence+","+jour+","+hdebut+","+hfin+",-1); /* formation " + (i + 1) + " */\n\n");
                 }
             }
 
@@ -123,15 +123,17 @@ public class InstanceGenerator {
             output.write("    private int idCompetence; // (Signes : 0 / Codage LPC : 1)\n");
             output.write("    private int jour; // (Lundi : 1 / ... / Samedi : 6)\n");
             output.write("    private int heureDebut;\n");
-            output.write("    private int heureFin;\n\n");
+            output.write("    private int heureFin;\n");
+            output.write("    private int idInterface;\n\n");
 
-            output.write("    Formation(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin) {\n");
+            output.write("    Formation(int idAprennant, int idSpecialite, int idCompetence, int jour, int heureDebut, int heureFin, int idInterface) {\n");
             output.write("        this.idAprennant = idAprennant;\n");
             output.write("        this.idSpecialite = idSpecialite;\n");
             output.write("        this.idCompetence = idCompetence;\n");
             output.write("        this.jour = jour;\n");
             output.write("        this.heureDebut = heureDebut;\n");
             output.write("        this.heureFin = heureFin;\n");
+            output.write("        this.idInterface = idInterface;\n");
             output.write("    }\n\n");
 
             output.write("    public int getIdAprennant() { return idAprennant; }\n\n");
@@ -141,6 +143,8 @@ public class InstanceGenerator {
             output.write("    public int getHeureDebut() { return heureDebut; }\n\n");
             output.write("    public int getHeureFin() { return heureFin; }\n\n");
             output.write("    public int getDuree() { return this.heureFin-this.heureDebut; }\n");
+            output.write("    public int getIdInterface() { return this.idInterface; }\n");
+            output.write("    public void setIdInterface(int i) { this.idInterface=i; }\n");
 
             output.write("}");
             output.close();

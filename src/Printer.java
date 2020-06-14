@@ -191,5 +191,9 @@ public class Printer {
         sb.append("        ").append(f.getIdAprennant());
         System.out.println(sb.toString());
     }
+
+    public void printEDT(Interface i) {
+
+    }
 }
 
