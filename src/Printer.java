@@ -141,26 +141,26 @@ public class Printer {
         StringBuilder sb = new StringBuilder();
         switch (f.getJour()){
             case 1:
-                sb.append("Lundi    ");
+                sb.append("   Lundi  ");
                 break;
             case 2:
-                sb.append("Mardi    ");
+                sb.append("   Mardi  ");
                 break;
             case 3:
-                sb.append("Mercredi ");
+                sb.append(" Mercredi ");
                 break;
             case 4:
-                sb.append("Jeudi    ");
+                sb.append("   Jeudi  ");
                 break;
             case 5:
-                sb.append("Vendredi ");
+                sb.append(" Vendredi ");
                 break;
             case 6:
-                sb.append("Samedi   ");
+                sb.append("  Samedi  ");
                 break;
         }
-        if (f.getHeureDebut()<10) sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h)  : ");
-        else sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) : ");
+        if (f.getHeureDebut()<10) sb.append(" (").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) | ");
+        else sb.append("(").append(f.getHeureDebut()).append("h-").append(f.getHeureFin()).append("h) | ");
 
         sb.append("La formation de spécialité ");
         switch (f.getIdSpecialite()){

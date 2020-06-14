@@ -31,6 +31,8 @@ public class Optimisation {
 
     public void begin() {
 
+        System.out.println("        Date        |     Spécialité     |     Compétence     |      Interface     |      Apprenant     ");
+
         int id = 0;
         for (int day = 1; day < 7; day++) {
 
