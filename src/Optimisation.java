@@ -15,7 +15,6 @@ public class Optimisation {
     private Coord coordSESSAD;
 
     private double multiplicateurFormation;
-    private double multiplicateurHoraire;
     private double dimension;
 
     public Optimisation(Configuration config, Printer printer) {
@@ -27,7 +26,6 @@ public class Optimisation {
         this.coordsApprenants = config.coordsApprenants;
         this.coordSESSAD = config.SESSAD;
         this.multiplicateurFormation = config.MULTIPLICATEUR_FORMATION;
-        this.multiplicateurHoraire = config.MULTIPLICATEUR_HORAIRE;
         this.dimension = config.DIMENSION_ZONE_GEOGRAPHIQUE;
     }
 
@@ -115,6 +113,9 @@ public class Optimisation {
                     }*/
 
                     i.incrValeurJour(i.getValeurJour()*calcMultiplicateurDistance(i));
+                    i.incrValeurJour(i.getValeurJour()*calcMultiplicateurHoraire(i));
+
+
 
 
                     System.out.println();
@@ -146,6 +147,10 @@ public class Optimisation {
 
     private double calcMultiplicateurDistance(Interface i) {
         return dimension+ 0.1 - ( i.getValeurJour()/ dimension);
+    }
+
+    private double calcMultiplicateurHoraire(Interface i) {
+        return 35+ 0.1 - (double)( i.getTempsTravail() / 35);
     }
 
     public double calcDistance(Coord c1, Coord c2) {
