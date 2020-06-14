@@ -193,7 +193,7 @@ public class Printer {
     }
 
     public void printEDT(Interface i) {
-
+        System.out.println("cc");
     }
 }
 

@@ -1,3 +1,5 @@
+import Enums.Interface;
+
 public class Main {
     public static void main(String[] args) {
         Configuration config = new Configuration(); // Récupération des données du projet
@@ -13,5 +15,10 @@ public class Main {
         //Appel de l'algorithme de recherche
         Optimisation o = new Optimisation(config, p);
         o.begin();
+
+        //Affichage de l'emploi du temps de chaque interface
+        for (Interface i:config.interfaces) {
+            p.printEDT(i);
+        }
     }
 }
