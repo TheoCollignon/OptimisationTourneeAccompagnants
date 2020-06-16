@@ -23,7 +23,7 @@ public class Printer {
     public void printFormation(Formation f, int id){
         StringBuilder sb = new StringBuilder();
         sb.append("Formation ").append(id).append(" : ");
-        sb.append("N° apprenant ").append(f.getIdAprennant()).append(" / ");
+        sb.append("N° apprenant ").append(f.getIdAprennant()+1).append(" / ");
         sb.append("Spécialité ");
         switch (f.getIdSpecialite()){
             case 0:
